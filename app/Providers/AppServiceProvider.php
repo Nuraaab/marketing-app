@@ -21,6 +21,8 @@ use App\Models\ContactInfo;
 use App\Models\PackageCategory;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Schema; // Add this line
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -36,52 +38,55 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $siteData = SiteData::first();
-        $aboutData = About::first();
-        $why_us = WhyChoosUs::all();
-        $team = Team::all();
-        $counters = Counter::all();
-        $companyFeature = Companyfeature::all();
-    
-        // Handle banner images if siteData is available
-        $images = $siteData ? $siteData->bannerImages : [];
-    
-        $services = Service::all();
-        $projects = Portfolio::all();
-        $testimonials = Testimonial::all();
-        $faqs = Faq::all();
-        $news = Blog::all();
-        $brands = Brand::all();
-        $contacts = ContactInfo::first();
-    
-        $orders = Order::all();
-        // Filter packages based on the `category` query parameter
-        $category = Request::query('category', 'all');
-        if ($category === 'all') {
-            $packages = Package::with('features')->get();
-        } else {
-            $packages = Package::with('features')->where('category', $category)->get();
+        // Check if the database is connected and the required tables exist
+        if (Schema::hasTable('site_data') && Schema::hasTable('about') && Schema::hasTable('why_choos_us')) {
+            $siteData = SiteData::first();
+            $aboutData = About::first();
+            $why_us = WhyChoosUs::all();
+            $team = Team::all();
+            $counters = Counter::all();
+            $companyFeature = Companyfeature::all();
+            $images = $siteData ? $siteData->bannerImages : [];
+            $services = Service::all();
+            $projects = Portfolio::all();
+            $testimonials = Testimonial::all();
+            $faqs = Faq::all();
+            $news = Blog::all();
+            $brands = Brand::all();
+            $contacts = ContactInfo::first();
+            $orders = Order::all();
+
+            // Filter packages based on the `category` query parameter
+            $category = Request::query('category', 'all');
+            if ($category === 'all') {
+                $packages = Package::with('features')->get();
+            } else {
+                $packages = Package::with('features')->where('category', $category)->get();
+            }
+
+            $categories = PackageCategory::all();
+
+            // Share data with all views
+            View::share([
+                'siteData' => $siteData,
+                'images' => $images,
+                'companyFeatures' => $companyFeature,
+                'aboutData' => $aboutData,
+                'services' => $services,
+                'teams' => $team,
+                'why_us' => $why_us,
+                'projects' => $projects,
+                'faqs' => $faqs,
+                'counters' => $counters,
+                'packages' => $packages,  // Filtered packages
+                'testimonials' => $testimonials,
+                'news' => $news,
+                'brands' => $brands,
+                'contacts' => $contacts,
+                'selectedCategory' => $category,
+                'categories' => $categories,
+                'orders' => $orders,
+            ]);
         }
-        $categories = PackageCategory::all();
-        View::share([
-            'siteData' => $siteData,
-            'images' => $images,
-            'companyFeatures' => $companyFeature,
-            'aboutData' => $aboutData,
-            'services' => $services,
-            'teams' => $team,
-            'why_us' => $why_us,
-            'projects' => $projects,
-            'faqs' => $faqs,
-            'counters' => $counters,
-            'packages' => $packages,  // Filtered packages
-            'testimonials' => $testimonials,
-            'news' => $news,
-            'brands' => $brands,
-            'contacts' => $contacts,
-            'selectedCategory' => $category,
-            'categories' => $categories,
-            'orders' =>$orders,
-        ]);
     }
 }
