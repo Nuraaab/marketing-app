@@ -318,6 +318,24 @@ function previewFaq(event) {
     reader.readAsDataURL(event.target.files[0]);
 }
 
+function previewCta(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+        var output = document.getElementById('ctaPreview');
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+function previewFooterLogo(event) {
+    var reader = new FileReader();
+    reader.onload = function(){
+        var output = document.getElementById('footerLogoPreview');
+        output.src = reader.result;
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
+
 function previewCounterImage(event) {
     var reader = new FileReader();
     reader.onload = function(){

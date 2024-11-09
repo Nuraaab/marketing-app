@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\SiteData;
 use App\Models\BannerImage;
-
+use App\Models\Order;
 class AdminController extends Controller
 {
     public function showLoginForm()
@@ -13,8 +13,10 @@ class AdminController extends Controller
         return view('admin.auth.login');
     }
     public function dashboard(){
-        $siteData = SiteData::first();
-        return view('admin.dashboard.index', compact('siteData'));
+        
+        $data['siteData'] = SiteData::first();
+        $data['orders'] = Order::all();
+        return view('admin.dashboard.index', $data);
     }
     public function staticSection()
 {
@@ -41,6 +43,19 @@ class AdminController extends Controller
             $site = SiteData::firstOrNew([]);
             $bannerImage = new BannerImage();
             $logo = $request->file('logo');
+            $footer_logo = $request->file('footer_logo');
+            $footer_desc = $request->footer_desc;
+            $newsletter_title = $request->newsletter_title;
+            $newsletter_subtitle = $request->newsletter_subtitle;
+            $copyright_text = $request->copyright_text;
+            $cta_title = $request->cta_title;
+            $cta_subtitle = $request->cta_subtitle;
+            $facebook_url = $request->facebook_url;
+            $twitter_url = $request->twitter_url;
+            $youtube_url = $request->youtube_url;
+            $linkden_url = $request->linkden_url;
+            $cta_image = $request->file('cta_image');
+
            
             
             if ($logo) {
@@ -50,12 +65,36 @@ class AdminController extends Controller
             
             }
 
+            if ($footer_logo) {
+                $footer_logoImageName = time() . '_footer_logo.' . $footer_logo->getClientOriginalExtension();
+                $footer_logo->move(public_path('admin/logo'), $footer_logoImageName);
+                $site->footer_logo = $footer_logoImageName;
+            
+            }
+
+            if ($cta_image) {
+                $cta_imageImageName = time() . '_cta_image.' . $cta_image->getClientOriginalExtension();
+                $cta_image->move(public_path('admin/cta_image'), $cta_imageImageName);
+                $site->cta_image = $cta_imageImageName;
+            
+            }
+
             $site->banner_title = $request->banner_title;
             $site->banner_sub_title = $request->banner_subtitle;
             $site->banner_button_name = $request->banner_button_name;
             $site->banner_button_url = $request->banner_button_url;
             $site->banner_video_button = $request->banner_video_button_name;
             $site->banner_video_url = $request->banner_video_button_url;
+            $site->cta_title = $cta_title;
+            $site->cta_subtitle = $cta_subtitle;
+            $site->footer_desc = $footer_desc;
+            $site->newsletter_title = $newsletter_title;
+            $site->newsletter_subtitle = $newsletter_subtitle;
+            $site->facebook_url = $facebook_url;
+            $site->youtube_url = $youtube_url;
+            $site->twitter_url = $twitter_url;
+            $site_linkden_url =$linkden_url;
+            $site->copyright_text = $copyright_text;
             if($site->save()){
                 $banner = $request->file('banner');
                 if ($banner) {

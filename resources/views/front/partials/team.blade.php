@@ -18,18 +18,27 @@
                                 <img src="{{!empty($team->image) ? asset('admin/team_image/' . $team->image) : '' }}" alt="team-img">
                                 <div class="icon-list">
                                     <ul>
+                                        @if(!empty($team->facebook_url))
                                         <li>
-                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                            <a href="{{$team->facebook_url}}"><i class="fab fa-facebook-f"></i></a>
                                         </li>
+                                        @endif
+                                        @if(!empty($team->twitter_url))
                                         <li>
-                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                            <a href="{{$team->twitter_url}}"><i class="fab fa-twitter"></i></a>
                                         </li>
+                                        @endif
+                                        @if(!empty($team->linkedin_url))
                                         <li>
-                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="{{$team->linkedin_url}}"><i class="fab fa-linkedin-in"></i></a>
                                         </li>
+                                        @endif
+
+                                        @if(!empty($team->github_url))
                                         <li>
-                                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                        <a href="#"><i class="fab fa-github"></i></a>
                                         </li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

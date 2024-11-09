@@ -40,6 +40,20 @@ class SiteData extends Model
         'package_subtitle',
         'team_title',
         'team_subtitle',
+        'cta_title',
+        'cta_subtitle',
+        'cta_image',
+        'footer_logo',
+        'newsletter_title',
+        'newsletter_subtitle',
+        'facebook_url',
+        'twitter_url',
+        'youtube_url',
+        'linkden_url',
+        'footer_desc',
+        'copyright_text',
+        'primary_color',
+        'secondary_color'
     ];
     public function bannerImages()
     {

@@ -18,6 +18,7 @@ use App\Http\Controllers\ContactInfoController;
 use App\Http\Controllers\CompanyFeatureController;
 use App\Http\Controllers\Front\FrontAboutController;
 use App\Http\Controllers\Front\FrontController;
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,7 +62,11 @@ Route::controller(FrontController::class)->group(function(){
     Route::get('/project', 'getProject')->name('project');
     Route::get('/news', 'getNews')->name('news');
     Route::get('/project_details/{id}', 'projectDetails')->name('project_details');
+    Route::get('/news_details/{id}', 'newsDetails')->name('news_details');
+    Route::get('/service_details/{id}', 'serviceDetails')->name('service_details');
+    Route::get('/team_details/{id}', 'teamDetails')->name('team_details');
     Route::post('/checkout', 'getLogin')->name('checkout');
+    Route::post('/contact', 'contact')->name('contact');
 
 });
 Route::controller(ServiceController::class)->group(function (){
@@ -136,6 +141,10 @@ Route::controller(ContactInfoController::class)->group(function (){
 Route::controller(CompanyFeatureController::class)->group(function (){
     Route::get('/company_feature_section', 'companyFeatureSection')->name('company_feature_section');
     Route::post('/create_company_feature', 'createCompanyFeature')->name('create_company_feature');
+});
+
+Route::controller(CommentController::class)->group(function () {
+    Route::post('/post_comment', 'postComment')->name('post_comment');
 });
 
 

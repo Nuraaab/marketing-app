@@ -5,7 +5,7 @@
             </div>
             @if(!empty($contacts->top_desc))
             <p>
-                {{$contacts->top_desc}}
+                {{$contacts->top_desc}} 
             </p>
             @endif
             <div class="info mt-50">

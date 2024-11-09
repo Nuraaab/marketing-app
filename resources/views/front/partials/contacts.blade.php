@@ -88,53 +88,33 @@
                                     </h2>
                                 </div>
                                 <div class="contact-right">
-                                    <form>
+                                    <form action="{{route('contact')}}"  method="POST">
+                                    @csrf
                                         <div class="row g-4">
-                                            <div class="col-lg-6 wow fadeInUp" data-wow-delay=".2">
+                                        <div class="row g-4">
+                                            <div class="col-lg-6">
                                                 <div class="form-clt">
-                                                    <input type="text" name="name" id="name" placeholder="Full Name">
-                                                    <div class="icon">
-                                                        <i class="fas fa-user"></i>
-                                                    </div>
+                                                    <input type="text" id="name" name ="name" placeholder="Enter Name">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6 wow fadeInUp" data-wow-delay=".4">
+                                            <div class="col-lg-6">
                                                 <div class="form-clt">
-                                                    <input type="text" name="email" id="email" placeholder="info@web">
-                                                    <div class="icon">
-                                                        <i class="fas fa-envelope-open"></i>
-                                                    </div>
+                                                    <input type="text" id="email" name="email" placeholder="Enter Email Address">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6 wow fadeInUp" data-wow-delay=".6">
+                                            <div class="col-lg-6">
                                                 <div class="form-clt">
-                                                    <input type="text" name="location" id="location" placeholder="Location">
-                                                    <div class="icon">
-                                                        <i class="fas fa-globe"></i>
-                                                    </div>
+                                                    <input type="text" id="phone" name="phone" placeholder="Enter Number">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-6 wow fadeInUp" data-wow-delay=".7">
+                                            <div class="col-lg-6">
                                                 <div class="form-clt">
-                                                    <select name="card1">
-                                                        <option value="1">
-                                                            Service Name
-                                                        </option>
-                                                        <option value="1">
-                                                            Solar Service
-                                                        </option>
-                                                        <option value="1">
-                                                            Solar Service
-                                                        </option>
-                                                    </select>
+                                                    <input type="text" id="subject" name= "subject" placeholder="Enter Subject">
                                                 </div>
                                             </div>
-                                            <div class="col-lg-12 wow fadeInUp" data-wow-delay=".8">
+                                            <div class="col-lg-12">
                                                 <div class="form-clt-big form-clt">
-                                                    <textarea name="message" id="message" placeholder="Write Comments"></textarea>
-                                                    <div class="icon">
-                                                        <i class="fas fa-pencil"></i>
-                                                    </div>
+                                                    <textarea id="message" name = "message" placeholder="Enter Message"></textarea> 
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">

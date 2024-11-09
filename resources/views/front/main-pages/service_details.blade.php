@@ -175,10 +175,12 @@
             <button id="closeButton" class="text-white"><i class="fas fa-times"></i></button>
         </div>
 
-        <div class="breadcrumb-wrapper" data-background="front/assets/img/breadcrumb/breadcrumb.jpg">
+
+
+        <div class="breadcrumb-wrapper" data-background="{{asset('front/assets/img/breadcrumb/breadcrumb.jpg')}}">
             <div class="container">
                 <div class="page-heading center">
-                    <h1>News</h1>
+                    <h1>service details</h1>
                     <ul class="breadcrumb-items">
                         <li>
                             <a href="index.html">
@@ -189,124 +191,138 @@
                             <i class="fas fa-chevron-double-right"></i>
                         </li>
                         <li>
-                            News
+                            service details
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        @if(isset($blogs) && $blogs->isNotEmpty())
-        <section class="blog-wrapper news-wrapper section-padding">
+
+        @if(isset($services))
+        <section class="service-details section-padding">
             <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <div class="blog-posts">
-                            @foreach($blogs as $blog)
-                            <div class="single-blog-post">
-                                <div class="post-featured-thumb bg-cover" data-background="{{!empty($blog->image) ? asset('admin/blog_image/' . $blog->image) : '' }}"></div>
-                                <div class="post-content">
-                                    <div class="post-cat">
-                                        <a href="/news">{{!empty($blog->category) ? $blog->category : ''}}</a>
+                <div class="row g-5">
+                    <div class="col-xl-4  order-2 order-md-1">
+                        <div class="service-sidebar">
+                            <!-- <h4 class="mb-4">Services Category</h4>
+                            <div class="sidebar-widget">
+                                <div class="service-button-wrap">
+                                    <div class="service-button">
+                                        <a href="service-details.html" class="theme-btn">
+                                        <span> Financial & Planning</span>
+                                        <i class="far fa-angle-double-right"></i>
+                                        </a>
                                     </div>
-                                    <h2><a href="{{route('news_details', ['id' => $blog->id])}}">{{!empty($blog->title) ? $blog->title : ''}}</a></h2>
-                                    <div class="post-meta">
-                                        <!-- <span><i class="fal fa-comments"></i>35 Comments</span> -->
-                                        <span><i class="fal fa-calendar-alt"></i>{{!empty($blog->date) ? $blog->date : ''}}</span>
+                                    <div class="service-button">
+                                        <a href="service-details.html" class="theme-btn">
+                                        <span> Business Consulting</span>
+                                        <i class="far fa-angle-double-right"></i>
+                                        </a>
                                     </div>
-                                    <p>{{!empty($blog->desc) ? $blog->desc : ''}}</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-30">
-                                        <div class="author-info">
-                                            <div class="author-img" data-background="front/assets/img/blog/author_img.jpg"></div>
-                                            <h5><a href="#">{{!empty($blog->author) ? $blog->author : ''}}</a></h5>
-                                        </div>
-                                        <div class="post-link">
-                                            <a href="{{route('news_details', ['id' => $blog->id])}}"><i class="fal fa-arrow-right"></i> {{!empty($blog->button_text) ? $blog->button_text : ''}}</a>
-                                        </div>
+                                    <div class="service-button">
+                                        <a href="service-details.html" class="theme-btn">
+                                        <span>Web Development </span>
+                                        <i class="far fa-angle-double-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="service-button">
+                                        <a href="service-details.html" class="theme-btn">
+                                        <span>Socail Marketing </span>
+                                        <i class="far fa-angle-double-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="service-button">
+                                        <a href="service-details.html" class="theme-btn">
+                                        <span>Insurance Consulting </span>
+                                        <i class="far fa-angle-double-right"></i>
+                                        </a>
+                                    </div>
+                                    <div class="service-button">
+                                        <a href="service-details.html" class="theme-btn">
+                                        <span>IT & NFT Technology </span>
+                                        <i class="far fa-angle-double-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="sidebar-widget">
+                                <h4 class="mb-3">
+                                    Documents
+                                </h4>
+                                <div class="download-service-doc">
+                                    <a href="#" class="theme-btn"><i class="fal fa-cloud-download"></i> Pricing Plan</a>
+                                    <a href="#" class="theme-btn active--btn"><i class="fal fa-file-pdf"></i>Download.PDF</a>
+                                    <a href="#" class="theme-btn"><i class="fal fa-file-alt"></i>Download.ppt</a>
+                                </div>
+                            </div>
+                            <div class="sidebar-widget contact-bg" data-background="{{asset('front/assets/img/hero/hero1.jpg')}}">
+                                <div class="service-contact center">
+                                    <h6>
+                                        Let's Work Together
+                                    </h6>
+                                    <h2>
+                                        Company Name
+                                    </h2>
+                                    <div class="icon">
+                                        <i class="fal fa-phone-volume"></i>
+                                        <span>{{$contacts->phone}}</span>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
-
-
                         </div>
-                        <div class="page-nav-wrap mt-60 text-center">
-                        <ul>
-                            {{-- Previous Page Link --}}
-                            @if ($blogs->onFirstPage())
-                                <li><span class="page-numbers"><i class="fal fa-long-arrow-left"></i></span></li>
-                            @else
-                                <li><a class="page-numbers" href="{{ $blogs->previousPageUrl() }}"><i class="fal fa-long-arrow-left"></i></a></li>
-                            @endif
-
-                            {{-- Pagination Elements --}}
-                            @foreach ($blogs->getUrlRange(1, $blogs->lastPage()) as $page => $url)
-                                @if ($page == $blogs->currentPage())
-                                    <li><span class="page-numbers">{{ str_pad($page, 2, '0', STR_PAD_LEFT) }}</span></li>
-                                @else
-                                    <li><a class="page-numbers" href="{{ $url }}">{{ str_pad($page, 2, '0', STR_PAD_LEFT) }}</a></li>
-                                @endif
-                            @endforeach
-
-                            {{-- Next Page Link --}}
-                            @if ($blogs->hasMorePages())
-                                <li><a class="page-numbers" href="{{ $blogs->nextPageUrl() }}"><i class="fal fa-long-arrow-right"></i></a></li>
-                            @else
-                                <li><span class="page-numbers"><i class="fal fa-long-arrow-right"></i></span></li>
-                            @endif
-                        </ul>
                     </div>
-
-                        <!-- <div class="page-nav-wrap mt-60 text-center">
-                            <ul>
-                                <li><a class="page-numbers" href="#"><i class="fal fa-long-arrow-left"></i></a></li>
-                                <li><a class="page-numbers" href="#">01</a></li>
-                                <li><a class="page-numbers" href="#">02</a></li>
-                                <li><a class="page-numbers" href="#">..</a></li>
-                                <li><a class="page-numbers" href="#">10</a></li>
-                                <li><a class="page-numbers" href="#">11</a></li>
-                                <li><a class="page-numbers" href="#"><i class="fal fa-long-arrow-right"></i></a></li>
-                            </ul>
-                        </div> -->
-                    </div>
-                    <div class="col-12 col-lg-4">
-                        <div class="main-sidebar">
-                            <div class="single-sidebar-widget">
-                                <div class="wid-title">
-                                    <h3>Search</h3>
-                                </div>
-                                <div class="search_widget">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search your keyword...">
-                                        <button type="submit"><i class="fal fa-search"></i></button>
+                    <div class="col-xl-8 order-1 order-md-2">
+                        <div class="service-details-content">
+                            <div class="details-thumb">
+                                <img src="{{!empty($services->image) ? asset('admin/service_image/' . $services->image) : '' }}" alt="details-img">
+                            </div>
+                            <div class="content">
+                                <h2>
+                                    {{$services->name}}
+                                </h2>
+                                <p class="mt-4">
+                                    {{$services->content}}
+                                </p>
+                                <h3 class="mt-3">
+                                    Get Our Service
+                                </h3>
+                                <div class="contact-right mt-5">
+                                    <form action="{{route('contact')}}"  method="POST">
+                                        @csrf
+                                        <div class="row g-4">
+                                            <div class="col-lg-6">
+                                                <div class="form-clt">
+                                                    <input type="text" id="name" name ="name" placeholder="Enter Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-clt">
+                                                    <input type="text" id="email" name="email" placeholder="Enter Email Address">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-clt">
+                                                    <input type="text" id="phone" name="phone" placeholder="Enter Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-clt">
+                                                    <input type="text" id="subject" name= "subject" placeholder="Enter Subject">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <div class="form-clt-big form-clt">
+                                                    <textarea id="message" name = "message" placeholder="Enter Message"></textarea> 
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <button type="submit" class="theme-btn">
+                                                <span>Get Service</span>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </form>
-                                </div>
-                            </div>
-                           
-                            <div class="single-sidebar-widget">
-                                <div class="wid-title">
-                                    <h3>Categories</h3>
-                                </div>
-                                <div class="widget_categories">
-                                    <ul>
-                                        <li><a href="news.html">Consultant <span>23</span></a></li>
-                                        <li><a href="news.html">Help <span>24</span></a></li>
-                                        <li><a href="news.html">Education <span>11</span></a></li>
-                                        <li><a href="news.html">Technology <span>05</span></a></li>
-                                        <li><a href="news.html">business <span>06</span></a></li>
-                                        <li><a href="news.html">Events <span>10</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="single-sidebar-widget">
-                                <div class="wid-title">
-                                    <h3>Never Miss News</h3>
-                                </div>
-                                <div class="social-link">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                    <p class="form-message"></p>
                                 </div>
                             </div>
                         </div>
@@ -316,8 +332,10 @@
         </section>
         @endif
 
-            <!-- Footer Section Here -->
-            <footer class="footer-wrapper section-bg section-padding pb-0">
+
+
+
+        <footer class="footer-wrapper section-bg section-padding pb-0">
             <div class="dot-shape">
                 <img src="{{asset('front/assets/img/footer/dot-shape.png')}}" alt="dot-img">
             </div>

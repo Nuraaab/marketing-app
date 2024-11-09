@@ -22,7 +22,7 @@
                             <div class="news-image">
                                 <img src="{{!empty($blog->image) ? asset('admin/blog_image/' . $blog->image) : '' }}" alt="news-img">
                                 <div class="post-cat">
-                                    <a href="news-details.html" class="cat-name">{{!empty($blog->category) ? $blog->category : ''}}</a>                    
+                                    <a href="{{route('news_details', ['id' => $blog->id])}}" class="cat-name">{{!empty($blog->category) ? $blog->category : ''}}</a>                    
                                 </div>
                             </div>
                             <div class="news-content">
@@ -36,14 +36,14 @@
                                     </div>
                                 </div>
                                 <h3>
-                                    <a href="news-details.html">
+                                    <a href="{{route('news_details', ['id' => $blog->id])}}">
                                     {{!empty($blog->title) ? $blog->title : ''}}
                                     </a>
                                 </h3>
                                 <p>
                                 {{!empty($blog->desc) ? $blog->desc : ''}}
                                 </p>
-                                <a href="news-details.html" class="theme-btn-2  mt-3">
+                                <a href="{{route('news_details', ['id' => $blog->id])}}" class="theme-btn-2  mt-3">
                                 {{!empty($blog->button_text) ? $blog->button_text : ''}}<i class="fas fa-chevron-right"></i>
                                 </a>
                             </div>

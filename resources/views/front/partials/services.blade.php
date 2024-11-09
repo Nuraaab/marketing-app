@@ -25,7 +25,7 @@
                                             </div>
                                             <div class="service-title">
                                                 <h3>
-                                                    <a href="service-details.html">
+                                                    <a href="{{route('service_details', ['id' => $service->id])}}">
                                                    {{!empty($service->name) ? $service->name : ''}}
                                                     </a>
                                                 </h3>
@@ -34,7 +34,7 @@
                                         <p>
                                            {{!empty($service->content) ? $service->content : ''}}
                                         </p>
-                                        <a href="service-details.html" class="theme-btn-2  mt-3">
+                                        <a href="{{route('service_details', ['id' => $service->id])}}" class="theme-btn-2  mt-3">
                                         {{!empty($service->button_name) ? $service->button_name : 'Get Started'}}<i class="fas fa-chevron-right"></i>
                                         </a>
                                     </div>

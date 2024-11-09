@@ -19,4 +19,8 @@ class Blog extends Model
         'button_url'
 
     ];
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }
