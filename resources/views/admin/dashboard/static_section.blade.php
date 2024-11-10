@@ -367,8 +367,8 @@
 										</div>
 
                     <div class="row mb-3">
-                       <label for="formFile" class="form-label">Linkden Link</label>
-                        <input class="form-control form-control-lg mb-3" name="linkden_url" type="text" value = "{{$staticSiteData ? $staticSiteData->linkden_url : ''}}" placeholder="Linkden Link" aria-label=".form-control-lg example">
+                       <label for="formFile" class="form-label">Linkedin Link</label>
+                        <input class="form-control form-control-lg mb-3" name="linkden_url" type="text" value = "{{$staticSiteData ? $staticSiteData->linkden_url : ''}}" placeholder="Linkedin Link" aria-label=".form-control-lg example">
 								    
 										</div>
 

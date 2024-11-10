@@ -3,8 +3,8 @@
 
        @include('front.partials.preloader')
 
-        <!-- Header Top Section Here -->
-        <header class="main-header main-header-1">
+       <!-- Header Top Section Here -->
+       <header class="main-header main-header-1">
             <div class="main-logo">
                 <a href="index.html">
                 <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-image">
@@ -22,33 +22,44 @@
                             <ul class="contact-list">
                             <li>
                                 <i class="far fa-envelope"></i>
-                                @if(!empty($contacts->email))
+                                @isset($contacts->email)
                                     <a style = "color:white;" href="mailto:{{ $contacts->email }}">{{ $contacts->email }}</a>
-                                @endif
+                                @endisset
                             </li>
+                            @isset($contacts->adress)
                                 <li>
                                     <i class="far fa-map-marker-alt"></i> {{!empty($contacts->adress) ? $contacts->adress : ''}}
                                 </li>
+                            @endisset
                             </ul>
                             <div class="header-right">
                                 <ul class="contact-list">
                                     <li>
-                                        <i class="fal fa-clock"></i>14/7
+                                        <!-- <i class="fal fa-clock"></i>Mod-friday, 09am -05pm -->
                                     </li>
                                 </ul>
                                 <ul class="social-icon">
+                                  @isset($siteData->facebook_url)
                                     <li>
                                         <a href="{{$siteData->facebook_url}}"><i class="fab fa-facebook-f"></i></a>
                                     </li>
+                                    @endisset
+
+                                    @isset($siteData->twitter_url)
                                     <li>
-                                        <a href="{{$siteData->twitter_url}}"><i class="fab fa-twitter"></i></a>
+                                        <a href="{{$siteData->twitter}}"><i class="fab fa-twitter"></i></a>
                                     </li>
+                                    @endisset
+                                    @isset($siteData->linkden_url)
                                     <li>
                                         <a href="{{$siteData->linkden_url}}"><i class="fab fa-linkedin-in"></i></a>
                                     </li>
+                                    @endisset
+                                    @isset($siteData->youtube_url)
                                     <li>
                                         <a href="{{$siteData->youtube_url}}"><i class="fab fa-youtube"></i></a>
                                     </li>
+                                    @endisset
                                 </ul>
                             </div>
                         </div>
@@ -75,14 +86,31 @@
                                             <ul>
                                                 <li class="active">
                                                     <a href="/">Home</a>
-                                                 
+                                                    <!-- <ul>
+                                                        <li><a href="index.html">Home Consulting</a></li>
+                                                        <li><a href="index-2.html">IT Solutions</a></li>
+                                                        <li><a href="index-3.html">Baking</a></li>
+                                                        <li><a href="index-4.html">Solar Energy</a></li>
+                                                    </ul> -->
                                                 </li>
                                                 <li><a href="/about">About Us</a></li>
                                                 <li><a href="/service">Service</a></li>
                                                 <li><a href="/project">Projects</a></li>
-                                             
+                                                <!-- <li class="dropdown">
+                                                    <a href="#">Pages</a>
+                                                    <ul class="submenu">
+                                                        <li><a href="project-details.html">Project Details</a></li>
+                                                        <li><a href="service-details.html">Service Details</a></li>
+                                                        <li><a href="team.html">Team</a></li>
+                                                        <li><a href="team-details.html">Team Details</a></li>
+                                                    </ul>
+                                                </li> -->
                                                 <li >
                                                     <a href="/news">News</a>
+                                                    <!-- <ul class="submenu">
+                                                        <li><a href="news.html">News</a></li>
+                                                        <li><a href="news-details.html">News Details</a></li>
+                                                    </ul> -->
                                                 </li>
                                                 <li><a href="/contact">Contact</a></li>
                                             </ul>
@@ -124,6 +152,7 @@
        @include('front.partials.menu_sidebar')
 
         <!-- Sidebar Area Here -->
+         @if(isset($contacts))
         <div id="targetElement" class="side_bar slideInRight side_bar_hidden">
             <div class="side_bar_overlay"></div>
             <div class="logo mb-50">
@@ -174,6 +203,7 @@
             </div>
             <button id="closeButton" class="text-white"><i class="fas fa-times"></i></button>
         </div>
+        @endif
 
         <div class="breadcrumb-wrapper" data-background="{{asset('front/assets/img/breadcrumb/breadcrumb.jpg')}}">
             <div class="container">
@@ -319,7 +349,8 @@
         </section>
         @endif
 
-        <footer class="footer-wrapper section-bg section-padding pb-0">
+       <!-- Footer Section Here -->
+       <footer class="footer-wrapper section-bg section-padding pb-0">
             <div class="dot-shape">
                 <img src="{{asset('front/assets/img/footer/dot-shape.png')}}" alt="dot-img">
             </div>
@@ -358,18 +389,27 @@
                                    {{$siteData->footer_desc}}
                                 </p>
                                 <ul class="social-icon">
+                                    @isset($siteData->facebook_url)
                                     <li>
                                         <a href="{{$siteData->facebook_url}}"><i class="fab fa-facebook-f"></i></a>
                                     </li>
+                                    @endisset
+
+                                    @isset($siteData->twitter_url)
                                     <li>
                                         <a href="{{$siteData->twitter}}"><i class="fab fa-twitter"></i></a>
                                     </li>
+                                    @endisset
+                                    @isset($siteData->linkden_url)
                                     <li>
                                         <a href="{{$siteData->linkden_url}}"><i class="fab fa-linkedin-in"></i></a>
                                     </li>
+                                    @endisset
+                                    @isset($siteData->youtube_url)
                                     <li>
-                                        <a href="{{$siteData->youtube}}"><i class="fab fa-youtube"></i></a>
+                                        <a href="{{$siteData->youtube_url}}"><i class="fab fa-youtube"></i></a>
                                     </li>
+                                    @endisset
                                 </ul>
                             </div>
                         </div>
@@ -493,6 +533,6 @@
                     </a>
                 </div>
             </div>
-        </footer>
+         </footer>
 
 @endsection

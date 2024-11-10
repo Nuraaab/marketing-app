@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="modinatheme">
         <!-- Page title -->
-        <title>Finland - Multi-Purpose HTML5 Template</title>
+        <title>Marketing</title>
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ asset('front/assets/img/favicon/favicon.png') }}">
         <!-- Bootstrap min.css -->
