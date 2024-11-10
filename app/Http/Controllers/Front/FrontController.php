@@ -10,7 +10,7 @@ use App\Models\Team;
 use App\Models\Service;
 use App\Models\Contact;
 use App\Models\SiteData;
-use App\Models\Companyfeature;
+use App\Models\CompanyFeature;
 use App\Models\About;
 use App\Models\WhyChoosUs;
 use App\Models\Faq;
@@ -35,7 +35,7 @@ class FrontController extends Controller
         $data['siteData'] = $siteData;
         $data['contacts'] = ContactInfo::first();
         $data['images'] = $siteData ? $siteData->bannerImages : [];
-        $data['companyFeatures'] = Companyfeature::all();
+        $data['companyFeatures'] = CompanyFeature::all();
         $data['aboutData'] = About::first();
         $data['services'] = Service::all();
         $data['teams'] = Team::all();
