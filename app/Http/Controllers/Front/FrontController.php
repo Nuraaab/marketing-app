@@ -120,7 +120,7 @@ class FrontController extends Controller
     }
 
     public function getLogin(Request $request){
-        $packageId = $request->input('package_id');
+        $packageId = Request::input('package_id');
         $package = Package::findOrFail($packageId);
         return view('front.main-pages.login', compact('package'));
     }
