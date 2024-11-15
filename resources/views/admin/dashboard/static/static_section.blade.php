@@ -242,7 +242,7 @@
                           name="primary_color" 
                           type="color" 
                           id="primaryColor" 
-                          value="{{ $staticSiteData ? $staticSiteData->primary_color : '#000000' }}" 
+                          value="{{ $staticSiteData ? $staticSiteData->primary_color : '#DF0A0A' }}" 
                           placeholder="Primary Color" 
                           aria-label=".form-control-lg example"
                       >
@@ -255,7 +255,7 @@
                           name="secondary_color" 
                           type="color" 
                           id="secondaryColor" 
-                          value="{{ $staticSiteData ? $staticSiteData->secondary_color : '#ffffff' }}" 
+                          value="{{ $staticSiteData ? $staticSiteData->secondary_color : '#1C2539' }}" 
                           placeholder="Secondary Color" 
                           aria-label=".form-control-lg example"
                       >
