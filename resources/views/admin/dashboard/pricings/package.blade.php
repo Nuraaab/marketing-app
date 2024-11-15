@@ -8,196 +8,7 @@
 
 
    <!--start sidebar-->
-   <aside class="sidebar-wrapper" data-simplebar="true">
-    <div class="sidebar-header">
-      <div class="logo-icon">
-      <img src="{{ !empty($siteData->header_logo) ? asset('/admin/logo/' . $siteData->header_logo) : '' }}" class="logo-img" alt="Logo" style="width:50px;">
-      </div>
-      <div class="logo-name flex-grow-1">
-        <h5 class="mb-0">Marketing</h5>
-      </div>
-      <div class="sidebar-close">
-        <span class="material-icons-outlined">close</span>
-      </div>
-    </div>
-    <div class="sidebar-nav">
-        <!--navigation-->
-        <ul class="metismenu" id="sidenav">
-          <li>
-            <a href="/dashboard">
-              <div class="parent-icon"><i class="material-icons-outlined">home</i>
-              </div>
-              <div class="menu-title">Dashboard</div>
-            </a>
-        
-          <li class="menu-label">Site UI</li>
-          
-          <li>
-            <a href="/static_section">
-              <div class="parent-icon"><i class="material-icons-outlined">view_agenda</i>
-              </div>
-              <div class="menu-title">Top Section</div>
-            </a>
-          
-          </li>
-          <li>
-            <a href="/company_feature_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Feature Section</div>
-            </a>
-           
-          </li>
-          <li>
-            <a href="/about_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">About Section</div>
-            </a>   
-          </li>
-
-          <li>
-            <a href="/service_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Service Section</div>
-            </a>   
-          
-          </li>
-
-
-          <li>
-            <a href="/team_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Team Section</div>
-            </a>   
-          </li>
-
-
-          <li>
-            <a href="/why_us">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Why Choose Us</div>
-            </a>   
-          </li>
-
-          <li>
-            <a class="has-arrow" >
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Portfolio Section</div>
-            </a>  
-            <ul>
-              <li><a href="/view_project"><i class="material-icons-outlined">arrow_right</i>Projects</a>
-              </li>
-             
-              <li><a href="/view_category"><i class="material-icons-outlined">arrow_right</i>Categories</a>
-              </li>
-             
-            
-            </ul> 
-          </li>
-
-          <li>
-            <a href="/faq_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">FAQ Section</div>
-            </a>   
-          </li>
-
-          <li>
-            <a href="/counter_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Counter Section</div>
-            </a>   
-          </li>
-
-          <li>
-            <a href="/testimonial_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Testimonial Section</div>
-            </a>   
-          </li>
-
-          <li>
-            <a href="/blog_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Blog Section</div>
-            </a>   
-          </li>
-
-          <li>
-            <a href="/brand_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Brand Section</div>
-            </a>   
-          </li>
-
-          <li>
-            <a  class="has-arrow">
-              <div class="parent-icon"><i class="material-icons-outlined">sports_football</i>
-              </div>
-              <div class="menu-title">Pricing</div>
-            </a>
-            <ul>
-              <li><a href="/view_package"><i class="material-icons-outlined">arrow_right</i>Packages</a>
-              </li>
-             
-              <li><a href="/view_feature"><i class="material-icons-outlined">arrow_right</i>Features</a>
-              </li>
-              <li><a href="/package_cat"><i class="material-icons-outlined">arrow_right</i>Category</a>
-              </li>
-            
-            </ul>
-          </li>
-          
-          <li>
-            <a href="/contact_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Contact Section</div>
-            </a>   
-          </li>
-
-         
-          <li>
-            <a href="javascript:;" class="has-arrow">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Footer Section</div>
-            </a>   
-            <ul>
-              <li><a href="icons-line-icons.html"><i class="material-icons-outlined">arrow_right</i>Footer Info</a>
-              </li>
-              <li><a href="icons-boxicons.html"><i class="material-icons-outlined">arrow_right</i>Footer Links</a>
-              </li>
-              <li><a href="icons-boxicons.html"><i class="material-icons-outlined">arrow_right</i>Footer Services</a>
-              </li>
-              <li><a href="icons-boxicons.html"><i class="material-icons-outlined">arrow_right</i>Footer Social Network</a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="menu-label">Setting</li>
-          <li>
-            <a  href="javascript:;">
-              <div class="parent-icon"><i class="material-icons-outlined">toc</i>
-              </div>
-              <div class="menu-title">Color Settings</div>
-            </a>
-          
-          </li>
-         </ul>
-        <!--end navigation-->
-    </div>
-  </aside>
+  @include('admin.partials.sidebar')
 <!--end sidebar-->
 
   <!--start main wrapper-->
@@ -238,6 +49,22 @@
                   <span class="material-icons-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
                 </div>
                  <div class="table-responsive">
+                 @if (session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                      <table class="table align-middle">
                        <thead>
                         <tr>
@@ -270,75 +97,135 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;">
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasPackage{{$package->id}}">
                                                 <span class="material-icons-outlined fs-5 me-2">edit</span>
                                                 Edit
                                             </a>
                                         </li>
                                         <li>
-                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;">
+                                        <form action="{{ route('package.destroy', $package->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this package?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type = "submit" class="dropdown-item d-flex align-items-center" href="javascript:;">
                                                 <span class="material-icons-outlined fs-5 me-2">delete</span>
                                                 Delete
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasFeature{{$package->id}}">
-                                                <span class="material-icons-outlined fs-5 me-2">inventory_2</span>
-                                                Feature
-                                            </a>
+                                        </button>
+                                          </form>
                                         </li>
                                     </ul>
                                 </div>
                             </td>
                             
                           </tr>
-                          <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasFeature{{$package->id}}">
-    <div class="offcanvas-header border-bottom h-70">
-        <div class="">
-            <p class="mb-0">Assign this feature to a Package</p>
-        </div>
-        <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
-            <i class="material-icons-outlined">close</i>
-        </a>
-    </div>
-    <div class="offcanvas-body">
-        <!-- Loop through the features array -->
-        @foreach($features as $feature)
-        <div class="d-flex align-items-center justify-content-between mb-3">
-            <!-- Display feature name -->
-            <div class="d-flex align-items-center gap-3">
-                <p class="mb-0">{{ $feature->name }}</p>
-            </div>
-            
-            <div class="d-flex align-items-center gap-2">
-                <div class="col">
-                    <a href="/view_feature" type="button" class="btn btn-outline-primary btn-circle rounded-circle d-flex gap-2 wh-35">
-                        <i class="material-icons-outlined">add</i>
-                    </a>
-                </div>
-                <div class="form-check form-switch form-check-success">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheck{{$feature->id}}" checked>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-</div>
+                          <!-- edit start -->
+                          <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasPackage{{$package->id}}">
+                          <div class="offcanvas-header border-bottom h-70">
+                              <div class="">
+                                  <p class="mb-0">Edit Package</p>
+                              </div>
+                              <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
+                                  <i class="material-icons-outlined">close</i>
+                              </a>
+                          </div>
+                          <div class="offcanvas-body">
+                          <form action="{{route('edit_package', ['id' =>$package->id])}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                             <!-- icon -->
+                             <div class="row mb-3">
+                                  <label for="formFile" class="form-label">Package Icon</label>
+                                  <div id="packagePreviewContainer">
+                                    @if(!empty($package) && !empty($package->icon))
+                                    <img id="packagePreview" src ="{{asset('admin/package_image/'. $package->icon)}}" width="200" class="rounded-3">
+                                    @else
+                                     <img id="packagePreview" width="200" class="rounded-3">
+                                    @endif
+                                  </div>
+                              </div>
 
-                          <!-- <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasFeature{{$package->id}}">
-                            <div class="offcanvas-header border-bottom h-70">
-                                <div class="">
-                                    <p class="mb-0">Assign this feature to a Package</p>
+                              <div class="row mb-3">
+                                  <input type="file" name="package_image" id="packageImageInput" accept=".jpg, .png, .svg, image/jpeg, image/png, image/svg+xml" multiple onchange="previewPackageImage(event)">
+                              </div>
+                              <!-- icon -->
+
+                              <!-- name -->
+                              <div class="row mb-3">
+                                        <label for="formFile" class="form-label">Package Name</label>
+                                          <input class="form-control form-control-lg mb-3" name="name" value ="{{$package->name}}" type="text"  placeholder="Enter Package Name" aria-label=".form-control-lg example">
+                            </div>
+                            <!-- category -->
+
+                            <div class="mb-4">
+                              <label for="package-select" class="form-label">Select Category</label>
+                              <select class="form-select" name="category" id="package-select" data-placeholder="Choose one">
+                                  @foreach($categories as $category)
+                                  <option value="{{$category->name}}" {{$package->category == $category->name ? 'selected' : ''}}>{{$category->name}}</option>
+                                  @endforeach
+                              </select>
+                          </div>
+                          <!-- category -->
+
+                          <!-- popular -->
+                          <div class="mb-4">
+                          <label for="single-select-clear-field" class="form-label">Popular?</label>
+                              <select class="form-select" name ="is_popular" id="single-select-clear-field" data-placeholder="Choose one thing">
+                                  <option {{$package->is_popular == '0' ? 'selected' : ''}}>No</option>
+                                  <option {{$package->is_popular == '1' ? 'selected' : ''}}>Yes</option>
+                              </select>
+                          </div>
+                          <!-- popular -->
+
+                          <!-- description -->
+                          <div class="row mb-3">
+                                      <label for="formFile" class="form-label">Package Description</label>
+                                      <textarea class="form-control" id="input47" name="desc" value = "{{$package->desc}}" rows="5" placeholder="Enter Package Description">{{$package->desc}}</textarea>
+                          </div>
+                          <!-- description -->
+
+                          <!-- price -->
+                          <div class="row mb-3">
+                                      <label for="formFile" class="form-label">Package Price</label>
+                                        <input class="form-control form-control-lg mb-3" name="price" value = "{{$package->price}}" type="number"  placeholder="Enter Package Price" aria-label=".form-control-lg example">
+                          </div>
+                          <!-- price -->
+
+                          <!-- unit -->
+                          <div class="mb-4">
+                          <label for="single-select-clear-field" class="form-label">Unit</label>
+                              <select class="form-select" name ="unit" id="single-select-clear-field" data-placeholder="Choose one thing">
+                                  <option {{$package->unit == '$' ? 'selected' : ''}}>USD($)</option>
+                                  <option {{$package->unit == 'ETB' ? 'selected' : ''}}>ETB</option>
+                              </select>
+                          </div>
+                          <!-- unit -->
+
+                          <!-- button -->
+                          <div class="row mb-3">
+                            <label for="formFile" class="form-label">Button Text</label>
+                              <input class="form-control form-control-lg mb-3" name="button_text" value = "{{$package->button_text}}" type="text"  placeholder="Enter Button Name" aria-label=".form-control-lg example">
+                          </div>
+
+                          <div class="row mb-3">
+                              <label for="formFile" class="form-label">Button Url</label>
+                                <input class="form-control form-control-lg mb-3" name="button_url" value = "{{$package->button_url}}" type="text"  placeholder="Enter Button Url" aria-label=".form-control-lg example">
+                            </div>
+                            <!-- button -->
+
+                             <!-- button start -->
+                             <div class="row">
+                                    <label class="col-sm-3 col-form-label"></label>
+                                    <div class="col-sm-9">
+                                        <div class="d-md-flex d-grid">
+                                            <button type="submit" style="color:white;" class="btn btn-grd-royal px-4">Update</button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
-                                    <i class="material-icons-outlined">close</i>
-                                </a>
-                            </div>
-                            <div class="offcanvas-body">
-                               
-                            
-                            </div>
-                        </div> -->
+                                <!-- button end -->
+                          </form>
+
+                          </div>
+                      </div>
+                      
+                      <!-- edit end -->
                         @endforeach
 
                         </tbody>

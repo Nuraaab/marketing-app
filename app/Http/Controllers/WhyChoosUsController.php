@@ -10,8 +10,15 @@ class WhyChoosUsController extends Controller
    public function whyUs(){
     $staticSiteData = SiteData::firstOrNew([]);
     $whyUsData = WhyChoosUs::all();
-    return view('admin.dashboard.why_us_section', compact('staticSiteData', 'whyUsData'));
+    return view('admin.dashboard.why_us.why_us_section', compact('staticSiteData', 'whyUsData'));
    }
+
+
+   public function viewWhyUs(){
+    $data['why_us'] = WhyChoosUs::all();
+    return view('admin.dashboard.why_us.why_us', $data);
+   }
+
 
    public function createWhy(Request $request)
    {
@@ -69,6 +76,47 @@ class WhyChoosUsController extends Controller
            \Log::error($e->getMessage());
            return redirect()->back()->with('error', 'An Error Occurred! Please try again.');
        }
+   }
+
+   public function editWhyUs(Request $request, $id){
+    $request->validate([
+        'why_image' => 'nullable|image|mimes:jpg,png,svg|max:2048',
+        'icon' => 'nullable|image|mimes:jpg,png,svg|max:2048',
+        'why_title' => 'nullable|string|max:255',
+        'why_subtitle' => 'nullable|string|max:255',
+        'why_desc' => 'nullable|string',
+        'why_name' => 'nullable|string|max:255',
+        'desc' => 'nullable|string',
+    ]);
+    try{
+        $why =WhyChoosUs::findOrFail($id);
+        $why_icon = $request->file('icon');
+        if ($why_icon) {
+            $whyIconImageName = time() . '_whyIcon.' . $why_icon->getClientOriginalExtension();
+            $why_icon->move(public_path('admin/why_image'), $whyIconImageName);
+            $why->icon = $whyIconImageName;
+        }
+        $why->title = $request->why_name;
+        $why->desc = $request->desc;
+        if ($why->save()) {
+            return redirect()->back()->with('success', 'Choose Us data updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'An error occurred while saving the choose us data.');
+        }
+    }catch (\Exception $e) {
+           \Log::error($e->getMessage());
+           return redirect()->back()->with('error', 'An Error Occurred! Please try again.');
+       }
+   }
+
+   public function destroyWhyUs($id){
+    $why_us = WhyChoosUs::findOrFail($id);
+    $imagePath = public_path('admin/why_image/' . $why_us->icon);
+    if (file_exists($imagePath)) {
+        unlink($imagePath);
+    }
+    $why_us->delete();
+    return redirect()->back()->with('success', 'Choose us deleted successfully.');
    }
    
 }

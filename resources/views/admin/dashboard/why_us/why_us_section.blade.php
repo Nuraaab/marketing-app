@@ -211,7 +211,7 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">FAQs Section</li>
+								<li class="breadcrumb-item active" aria-current="page">Why Us Section</li>
 							</ol>
 						</nav>
 					</div>
@@ -220,12 +220,26 @@
 
                 <div class="card">
                 <div class="card-body p-4">
+
+
+                <div class="d-flex align-items-start justify-content-between mb-3">
+                  <div class="">
+                    <h5 class="mb-0">Add Choose Us</h5>
+                  </div>
+                  <div class="dropdown">
+                  <div class="col">
+                  <div class="col">
+                    <a href = "/view_why_us"type="button" class="btn btn-outline-primary btn-circle rounded-circle d-flex gap-2 wh-48"><i class="material-icons-outlined">remove_red_eye</i></a>
+                  </div>
+                  </div>
+                  </div>
+                </div>
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                @endif 
+                @endif
 
                 @if ($errors->any())
                     <div class="alert alert-danger">
@@ -238,53 +252,63 @@
                 @endif
 
 
-                <form action="{{route('create_faq')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('create_why')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                 <div class="row mb-3">
-                       <label for="formFile" class="form-label">FAQs Section Title</label>
-                        <input class="form-control form-control-lg mb-3" name="faq_title" type="text" value = "{{$staticSiteData ? $staticSiteData->faq_title : ''}}" placeholder="Enter Title" aria-label=".form-control-lg example">
+                       <label for="formFile" class="form-label">Why Us Section Title</label>
+                        <input class="form-control form-control-lg mb-3" name="why_title" type="text" value = "{{$staticSiteData ? $staticSiteData->why_choose_us_title : ''}}" placeholder="Enter Why Us Title" aria-label=".form-control-lg example">
 								    
                 </div>
 
                 <div class="row mb-3">
-                       <label for="formFile" class="form-label">FAQs Section Subtitle</label>
-                        <input class="form-control form-control-lg mb-3" name="faq_subtitle" type="text" value = "{{$staticSiteData ? $staticSiteData->faq_subtitle : ''}}" placeholder="Enter Subitle" aria-label=".form-control-lg example">
+                       <label for="formFile" class="form-label">Why Us Section Subtitle</label>
+                        <input class="form-control form-control-lg mb-3" name="why_subtitle" type="text" value = "{{$staticSiteData ? $staticSiteData->why_choose_us_subtitle : ''}}" placeholder="Enter Why Us Subitle" aria-label=".form-control-lg example">
 								    
                 </div>
 
                 <div class="row mb-3">
-                       <label for="formFile" class="form-label">FAQs Section Video Url</label>
-                        <input class="form-control form-control-lg mb-3" name="faq_video" type="text" value = "{{$staticSiteData ? $staticSiteData->faq_video_url : ''}}" placeholder="Enter Url" aria-label=".form-control-lg example">
+                       <label for="formFile" class="form-label">Why Us Section Description</label>
+                       <textarea class="form-control" id="input47" name="why_desc" rows="5" placeholder="Enter Why us Description">{{ $staticSiteData ? $staticSiteData->why_choose_us_description : '' }}</textarea>
 								    
                 </div>
 
+
                 <div class="row mb-3">
-                        <label for="formFile" class="form-label">FAQs Image</label>
-                        <div id="faqPreviewContainer">
+                        <label for="formFile" class="form-label">Why Us Image</label>
+                        <div id="whyPreviewContainer">
                             <!-- Display the existing image if available -->
-                            @if(!empty($staticSiteData) && !empty($staticSiteData->faq_image))
-                                <img id="faqPreview" src="{{ asset('admin/faq_image/' .$staticSiteData->faq_image) }}" width="200" class="rounded-3">
+                            @if(!empty($staticSiteData) && !empty($staticSiteData->why_choose_us_image))
+                                <img id="whyPreview" src="{{ asset('admin/why_image/' .$staticSiteData->why_choose_us_image) }}" width="200" class="rounded-3">
                             @else
                                 <!-- Default placeholder if no image exists -->
-                                <img id="faqPreview" width="200" class="rounded-3">
+                                <img id="whyPreview" width="200" class="rounded-3">
                             @endif
                         </div>
                     </div>
 
                     <div class="row mb-3">
-                        <input type="file" name="faq_image" id="faqImageInput" accept=".jpg, .png, .svg, image/jpeg, image/png, image/svg+xml" multiple onchange="previewFaq(event)">
+                        <input type="file" name="why_image" id="aboutImageInput" accept=".jpg, .png, .svg, image/jpeg, image/png, image/svg+xml" multiple onchange="previewWhy(event)">
                     </div>
 
-                  
+                    <div class="row mb-3">
+                        <label for="formFile" class="form-label">Why Us Icon</label>
+                        <div id="whyIconPreviewContainer">
+                          <img id="whyIconPreview" width="200" class="rounded-3">
+                        </div>
+                    </div>
 
                     <div class="row mb-3">
-                       <label for="formFile" class="form-label">Question</label>
-                        <input class="form-control form-control-lg mb-3" name="question"  type="text" placeholder="Enter Question" aria-label=".form-control-lg example">
+                        <input type="file" name="icon" id="whyIconImageInput" accept=".jpg, .png, .svg, image/jpeg, image/png, image/svg+xml" multiple onchange="previewWhyIcon(event)">
+                    </div>
+
+                    <div class="row mb-3">
+                       <label for="formFile" class="form-label">Why Us Section Name</label>
+                        <input class="form-control form-control-lg mb-3" name="why_name"  type="text" placeholder="Enter Name" aria-label=".form-control-lg example">
 					 </div>
 
                      <div class="row mb-3">
-                       <label for="formFile" class="form-label">Answer</label>
-                       <textarea class="form-control" id="input47" name="answer" rows="5" placeholder="Enter Answer"></textarea>
+                       <label for="formFile" class="form-label">Why Us Section Description</label>
+                       <textarea class="form-control" id="input47" name="desc" rows="5" placeholder="Enter Description"></textarea>
 					 </div>
 
                      

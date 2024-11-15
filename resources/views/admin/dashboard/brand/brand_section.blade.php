@@ -22,7 +22,7 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Package Features Section</li>
+								<li class="breadcrumb-item active" aria-current="page">Brand Section</li>
 							</ol>
 						</nav>
 					</div>
@@ -31,14 +31,15 @@
 
                 <div class="card">
                 <div class="card-body p-4">
+
                 <div class="d-flex align-items-start justify-content-between mb-3">
                   <div class="">
-                    <h5 class="mb-0">Add Features</h5>
+                    <h5 class="mb-0">Add Team</h5>
                   </div>
                   <div class="dropdown">
                   <div class="col">
                   <div class="col">
-                    <a href = "/view_feature"type="button" class="btn btn-outline-primary btn-circle rounded-circle d-flex gap-2 wh-48"><i class="material-icons-outlined">remove_red_eye</i></a>
+                    <a href = "/view_brand"type="button" class="btn btn-outline-primary btn-circle rounded-circle d-flex gap-2 wh-48"><i class="material-icons-outlined">remove_red_eye</i></a>
                   </div>
                   </div>
                   </div>
@@ -61,36 +62,39 @@
                 @endif
 
 
-                <form action="{{route('create_feature')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('create_brand')}}" method="POST" enctype="multipart/form-data">
                   @csrf
                 <div class="row mb-3">
-                       <label for="formFile" class="form-label">Feature Name</label>
-                        <input class="form-control form-control-lg mb-3" name="name" type="text"  placeholder="Enter Feature Name" aria-label=".form-control-lg example">
-			     	  </div> 
+                       <label for="formFile" class="form-label">Brand Section Title</label>
+                        <input class="form-control form-control-lg mb-3" name="brand_title" type="text" value = "{{$staticSiteData ? $staticSiteData->brand_title : ''}}" placeholder="Enter Brand Title" aria-label=".form-control-lg example">
+				  </div>
 
-                    <div class="mb-4">
-                        <label for="package-select{{$feature->id}}" class="form-label">Select Package</label>
-                        <select class="form-select" name="package" id="package-select{{$feature->id}}" data-placeholder="Choose one">
-                            @foreach($packages as $package)
-                            <option value="{{$package->id}}">{{$package->name}}</option>
-                            @endforeach
-                        </select>
+                <div class="row mb-3">
+                       <label for="formFile" class="form-label">Brand Name</label>
+                        <input class="form-control form-control-lg mb-3" name="name" type="text"  placeholder="Enter Brand Name" aria-label=".form-control-lg example">
+				   </div>
+
+
+                <div class="row mb-3">
+                    <label for="formFile" class="form-label">Brand Image</label>
+                    <div id="brandPreviewContainer">
+                            <img id="brandPreview" width="200" class="rounded-3">
                     </div>
-                    <div class="mb-4">
-                        <label for="status-select{{$feature->id}}" class="form-label">Select Status</label>
-                        <select class="form-select" name="status" id="status-select{{$feature->id}}" data-placeholder="Choose one">
-                            <option value="1">Active</option>
-                            <option value="0">Not Active</option>
-                        </select>
+                </div>
+
+                <div class="row mb-3">
+                    <input type="file" name="brand_image" id="brandImageInput" accept=".jpg, .png, .svg, image/jpeg, image/png, image/svg+xml" multiple onchange="previewBrandImage(event)">
+                </div>
+
+              
+                     <div class="row">
+                    <label class="col-sm-3 col-form-label"></label>
+                    <div class="col-sm-9">
+                        <div class="d-md-flex d-grid">
+                            <button type="submit" style="color:white;" class="btn btn-grd-royal px-4">Add</button>
+                        </div>
                     </div>
-                    <!-- Pass the correct feature ID -->
-                    <input type="hidden" name="feature" value="{{$feature->id}}">
-
-                    <button class="btn btn-outline-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2" type="submit">
-                        <i class="material-icons-outlined">assignment</i>Assign
-                    </button>
-        
-
+                </div>
 
                 </form>
                 </div>

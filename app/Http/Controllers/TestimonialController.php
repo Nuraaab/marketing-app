@@ -9,7 +9,12 @@ class TestimonialController extends Controller
 {
     public function testimonialSection(){
         $staticSiteData = SiteData::firstOrNew([]);
-        return view('admin.dashboard.testimonial_section', compact('staticSiteData'));
+        return view('admin.dashboard.testimonial.testimonial_section', compact('staticSiteData'));
+    }
+
+    public function viewTestimonial(){
+        $data['testimonials'] = Testimonial::all();
+        return view('admin.dashboard.testimonial.testimonials', $data);
     }
 
     public function createTestimonial(Request $request){
@@ -62,4 +67,40 @@ class TestimonialController extends Controller
             return redirect()->back()->with('error', 'An Error Occurred! Please try again.');
         }
     }
+
+    public function editTestimonial(Request $request, $id){
+        $request->validate([
+            'user_image' => 'nullable|image|mimes:jpg,png,svg|max:2048',
+        ]);
+        try{
+            $testimonial = Testimonial::findOrFail($id);
+            $testimonial->name = $request->name;
+            $testimonial->role = $request->role;
+            $testimonial->message =$request->message;
+            $user_image = $request->file('user_image');
+            if ($user_image) {
+                $userImageName = time() . '_testimonial.' . $user_image->getClientOriginalExtension();
+                $user_image->move(public_path('admin/testimonial_image'), $userImageName);
+                $testimonial->image = $userImageName;
+            }
+            if ($testimonial->save()) {
+                return redirect()->back()->with('success', 'Testimonial updated successfully!');
+            } else {
+                return redirect()->back()->with('error', 'An error occurred while saving data.');
+            }
+        }catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An Error Occurred! Please try again.');
+        }
+    }
+
+    public function destroyTestimonial($id)
+{
+    $testimonial = Testimonial::findOrFail($id);
+    $imagePath = public_path('admin/testimonial_image/' . $testimonial->image);
+    if (file_exists($imagePath)) {
+        unlink($imagePath);
+    }
+    $testimonial->delete();
+    return redirect()->back()->with('success', 'Testimonial deleted successfully.');
+}
 }

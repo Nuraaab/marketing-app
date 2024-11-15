@@ -10,7 +10,12 @@ class FaqController extends Controller
    public function faqSection(){
     $staticSiteData = SiteData::firstOrNew([]);
     $faqData = Faq::all();
-    return view('admin.dashboard.faq_section', compact('staticSiteData', 'faqData'));
+    return view('admin.dashboard.faq.faq_section', compact('staticSiteData', 'faqData'));
+   }
+
+   public function viewFaq(){
+    $data['faqs'] = Faq::all();
+    return view('admin.dashboard.faq.faqs', $data);
    }
 
    public function createFaq(Request $request){
@@ -56,5 +61,26 @@ class FaqController extends Controller
         \Log::error($e->getMessage());
         return redirect()->back()->with('error', 'An Error Occurred! Please try again.');
     }
+   }
+
+   public function editFaq(Request $request, $id){
+    $faq = Faq::findOrFail($id);
+    try{
+        $faq->question = $request->question;
+        $faq->answer = $request->answer;
+        if ($faq->save()) {
+            return redirect()->back()->with('success', 'FAQs data added successfully!');
+        } else {
+            return redirect()->back()->with('error', 'An error occurred while saving the faq data.');
+        }
+    }catch (\Exception $e) {
+        return redirect()->back()->with('error', 'An Error Occurred! Please try again.');
+    }
+   }
+
+   public function destroyFaq($id){
+    $faq = Faq::findOrFail($id);
+    $faq->delete();
+    return redirect()->back()->with('success', 'FAQ deleted successfully.');
    }
 }

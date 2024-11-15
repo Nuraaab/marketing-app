@@ -10,7 +10,12 @@ class CompanyFeatureController extends Controller
    public function companyFeatureSection(){
 
     $staticSiteData = SiteData::first();
-    return view('admin.dashboard.feature_section', compact('staticSiteData'));
+    return view('admin.dashboard.feature.feature_section', compact('staticSiteData'));
+   }
+
+   public function viewFeatures(){
+    $data['features'] = CompanyFeature::all();
+    return view('admin.dashboard.feature.features', $data);
    }
 
    public function createCompanyFeature(Request $request){
@@ -51,5 +56,46 @@ class CompanyFeatureController extends Controller
     } catch (\Exception $e) {
         return redirect()->back()->with('error', 'An Error Occurred!');
     }
+   }
+
+   public function editCompanyFeature(Request $request, $id) {
+    $request->validate([
+        'feature_icon' => 'nullable|image|mimes:jpg,png,svg|max:2048',
+        'name' => 'nullable',
+        'feature_desc' => 'nullable',
+    ]);
+    try {
+        $feature_icon = $request->file('feature_icon');
+        $name = $request->feature_name;
+        $desc = $request->feature_desc;
+        $companyFeature = CompanyFeature::find($id);
+        if ($feature_icon) {
+            $companyFeatureIconName = time() . '_companyFeatureIcon.' . $feature_icon->getClientOriginalExtension();
+            $feature_icon->move(public_path('admin/companyFeature_image'), $companyFeatureIconName);
+            $companyFeature->icon = $companyFeatureIconName;
+        }
+
+        $companyFeature->name = $name;
+        $companyFeature->desc = $desc;
+        if ($companyFeature->save()) {
+            return redirect()->back()->with('success', 'Feature updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'An error occurred while updating the feature.');
+        }
+        
+
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'An Error Occurred!');
+    }
+   }
+
+   public function destroyCompanyFeature($id){
+    $feature = CompanyFeature::findOrFail($id);
+    $imagePath = public_path('admin/companyFeature_image/' . $feature->icon);
+    if (file_exists($imagePath)) {
+        unlink($imagePath);
+    }
+    $feature->delete();
+    return redirect()->back()->with('success', 'Feature deleted successfully.');
    }
 }

@@ -8,7 +8,7 @@
 
 
    <!--start sidebar-->
-   @include('admin.partials.sidebar')
+  @include('admin.partials.sidebar')
 <!--end sidebar-->
 
   <!--start main wrapper-->
@@ -22,7 +22,7 @@
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Categories</li>
+								<li class="breadcrumb-item active" aria-current="page">Brands</li>
 							</ol>
 						</nav>
 					</div>
@@ -36,46 +36,19 @@
               <div class="card-body">
                <div class="d-flex align-items-start justify-content-between mb-3">
                   <div class="">
-                    <h5 class="mb-0">Categories</h5>
-                 
+                    <h5 class="mb-0">Brands</h5>
+                
                   </div>
                   <div class="dropdown">
                   <div class="col">
-                    <button  class="btn btn-dark px-4 mt-4 raised d-flex gap-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCategory"><i class="material-icons-outlined" >add</i>Add New</button>
+                    <a href = "/brand_section" class="btn btn-dark px-4 mt-4 raised d-flex gap-2"><i class="material-icons-outlined" >add</i>Add New</a>
                   </div>
-                 
-
-
-                <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCategory">
-                            <div class="offcanvas-header border-bottom h-70">
-                                <div class="">
-                                    <p class="mb-0">Create New Package Category</p>
-                                </div>
-                                <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
-                                    <i class="material-icons-outlined">close</i>
-                                </a>
-                            </div>
-                            <div class="offcanvas-body">
-                                <form action="{{route('create_package_cat')}}" method="POST">
-                                    @csrf
-                                    <div class="row mb-3">
-                                        <label for="formFile" class="form-label">Category Name</label>
-                                            <input class="form-control form-control-lg mb-3" name="name" type="text"  placeholder="Enter Category Name" aria-label=".form-control-lg example">
-                                    </div>
-
-                                    <button class="btn btn-outline-primary position-fixed bottom-0 end-0 m-3 d-flex align-items-center gap-2" type="submit">
-                                        <i class="material-icons-outlined">add</i>Add
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-
-
                   </div>
                 </div>
                 <div class="order-search position-relative my-3">
                   <input class="form-control rounded-5 px-5" type="text" placeholder="Search">
                   <span class="material-icons-outlined position-absolute ms-3 translate-middle-y start-0 top-50">search</span>
+                
                 </div>
                  <div class="table-responsive">
                  @if (session('success'))
@@ -97,18 +70,27 @@
                  <table class="table align-middle">
                     <thead>
                         <tr>
-                            <th>Category Name</th>
+                            <th>Image</th>
+                            <th>Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($categories as $category)
+                        @foreach($brands as $brand)
                         <tr>
+                        <td>
+                              <div class="d-flex align-items-center gap-3">
+                                 <div class="">
+                                    <img src="{{ asset('admin/brand_image/' . $brand->brand_image) }}" class="rounded-circle" width="50" height="50" alt="">
+                                 </div>
+                              </div>
+                            </td>
                             <td>
                                 <div class="d-flex align-items-center gap-3">
-                                    <p class="mb-0">{{$category->name}}</p>
+                                    <p class="mb-0">{{$brand->name}}</p>
                                 </div>
                             </td>
+                            
                             <td>
                                 <div class="dropdown">
                                     <a href="javascript:;" class="dropdown-toggle-nocaret options dropdown-toggle" data-bs-toggle="dropdown">
@@ -116,19 +98,20 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCategory{{$category->id}}">
+                                            <a class="dropdown-item d-flex align-items-center" href="javascript:;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBrand{{$brand->id}}">
                                                 <span class="material-icons-outlined fs-5 me-2">edit</span>
                                                 Edit
                                             </a>
+
                                         </li>
                                         <li>
-                                        <form action="{{ route('category.destroy', $category->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this category?');">
+                                        <form action="{{ route('brand.destroy', $brand->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this brand?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type ="submit" class="dropdown-item d-flex align-items-center" href="javascript:;">
+                                            <button type ="submit" class="dropdown-item d-flex align-items-center" href="javascript:;" style ="border:none">
                                                 <span class="material-icons-outlined fs-5 me-2">delete</span>
                                                 Delete
-                                        </button>
+                                            </button>
                                         </form>
                                         </li>
                                        
@@ -136,29 +119,49 @@
                                 </div>
                             </td>
                         </tr>
-
-                         <!-- edit start -->
-                         <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCategory{{$category->id}}">
-                          <div class="offcanvas-header border-bottom h-70">
-                              <div class="">
-                                  <p class="mb-0">Edit Category</p>
-                              </div>
-                              <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
-                                  <i class="material-icons-outlined">close</i>
-                              </a>
-                          </div>
-                          <div class="offcanvas-body">
-                          <form action="{{route('edit_category', ['id' =>$category->id])}}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                           <!-- name -->
-                           <div class="row mb-3">
-                                <label for="formFile" class="form-label">Category Name</label>
-                                    <input class="form-control form-control-lg mb-3" name="name" value = "{{$category->name}}" type="text"  placeholder="Enter Category Name" aria-label=".form-control-lg example">
+                            <!-- edit start -->
+                        <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasBrand{{$brand->id}}">
+                            <div class="offcanvas-header border-bottom h-70">
+                                <div class="">
+                                    <p class="mb-0">Edit Brand</p>
+                                </div>
+                                <a href="javascript:;" class="primaery-menu-close" data-bs-dismiss="offcanvas">
+                                    <i class="material-icons-outlined">close</i>
+                                </a>
                             </div>
-                            <!-- name -->
+                            <div class="offcanvas-body">
+                            <form action="{{route('edit_brand', ['id' =>$brand->id])}}" method="POST" enctype="multipart/form-data">
+                              @csrf
+                               <!-- image start -->
+                               <div class="row mb-3">
+                                        <label for="formFile" class="form-label">Brand Image</label>
+                                        <div id="brandPreviewContainer">
+                                            @if(!empty($brand) && $brand->brand_image)
+                                            <img id="brandPreview" src = "{{asset('admin/brand_image/'. $brand->brand_image)}}" width="200" class="rounded-3">
+                                            @else
+                                            <img id="brandPreview" width="200" class="rounded-3">
+                                            @endif
+                                        </div>
+                                    </div>
 
-                             <!-- button start -->
-                             <div class="row">
+                                    <div class="row mb-3">
+                                        <input type="file" name="brand_image" id="brandImageInput" accept=".jpg, .png, .svg, image/jpeg, image/png, image/svg+xml" multiple onchange="previewBrandImage(event)">
+                                    </div>
+                                <!-- image end -->
+
+
+                                <!-- name start -->
+                                <div class="row mb-3">
+                                    <label for="formFile" class="form-label">Brand Name</label>
+                                        <input class="form-control form-control-lg mb-3" name="name" value = "{{$brand->name}}" type="text"  placeholder="Enter Brand Name" aria-label=".form-control-lg example">
+                                </div>
+                                <!-- name end -->
+                                
+
+                            
+
+                                <!-- button start -->
+                                <div class="row">
                                     <label class="col-sm-3 col-form-label"></label>
                                     <div class="col-sm-9">
                                         <div class="d-md-flex d-grid">
@@ -167,21 +170,14 @@
                                     </div>
                                 </div>
                                 <!-- button end -->
-                          </form>
-
-                          </div>
-                      </div>
-                      
-                      <!-- edit end -->
+                        </form>
+                        </div>
+                        </div>
+                        <!-- edit end -->
                         @endforeach
                     </tbody>
                 </table>
-
-
-                   
                  </div>
-
-
               </div>
             </div>
           </div>

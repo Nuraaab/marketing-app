@@ -1,8 +1,8 @@
 <aside class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
-      <div class="logo-icon">
+      <!-- <div class="logo-icon">
       <img src="{{ !empty($siteData->header_logo) ? asset('/admin/logo/' . $siteData->header_logo) : '' }}" class="logo-img" alt="Logo" style="width:50px;">
-      </div>
+      </div> -->
       <div class="logo-name flex-grow-1">
         <h5 class="mb-0">Marketing</h5>
       </div>
@@ -23,15 +23,21 @@
           <li class="menu-label">Site UI</li>
           
           <li>
-            <a href="/static_section">
+            <a  class="has-arrow">
               <div class="parent-icon"><i class="material-icons-outlined">view_agenda</i>
               </div>
-              <div class="menu-title">Top Section</div>
+              <div class="menu-title">Static Section</div>
             </a>
-          
+            <ul>
+              <li><a href="/static_section"><i class="material-icons-outlined">arrow_right</i>Top Section</a>
+              </li>
+              <li><a href="/banner_image"><i class="material-icons-outlined">arrow_right</i>Banner Images</a>
+              </li>
+            </ul> 
           </li>
+
           <li>
-            <a href="/company_feature_section">
+            <a  href="/view_features">
               <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
               </div>
               <div class="menu-title">Feature Section</div>
@@ -47,7 +53,7 @@
           </li>
 
           <li>
-            <a href="/service_section">
+            <a href="/view_services">
               <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
               </div>
               <div class="menu-title">Service Section</div>
@@ -57,7 +63,7 @@
 
 
           <li>
-            <a href="/team_section">
+            <a href="/view_team">
               <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
               </div>
               <div class="menu-title">Team Section</div>
@@ -66,7 +72,7 @@
 
 
           <li>
-            <a href="/why_us">
+            <a href="/view_why_us">
               <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
               </div>
               <div class="menu-title">Why Choose Us</div>
@@ -85,13 +91,11 @@
              
               <li><a href="/view_category"><i class="material-icons-outlined">arrow_right</i>Categories</a>
               </li>
-             
-            
             </ul> 
           </li>
 
           <li>
-            <a href="/faq_section">
+            <a href="/view_faq">
               <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
               </div>
               <div class="menu-title">FAQ Section</div>
@@ -99,7 +103,7 @@
           </li>
 
           <li>
-            <a href="/counter_section">
+            <a href="/view_counter">
               <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
               </div>
               <div class="menu-title">Counter Section</div>
@@ -107,7 +111,7 @@
           </li>
 
           <li>
-            <a href="/testimonial_section">
+            <a href="/view_testimonial">
               <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
               </div>
               <div class="menu-title">Testimonial Section</div>
@@ -115,7 +119,7 @@
           </li>
 
           <li>
-            <a href="/blog_section">
+            <a href="/view_blog">
               <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
               </div>
               <div class="menu-title">Blog Section</div>
@@ -123,7 +127,7 @@
           </li>
 
           <li>
-            <a href="/brand_section">
+            <a href="/view_brand">
               <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
               </div>
               <div class="menu-title">Brand Section</div>
@@ -156,34 +160,7 @@
             </a>   
           </li>
 
-         
-          <li>
-            <a href="javascript:;" class="has-arrow">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
-              </div>
-              <div class="menu-title">Footer Section</div>
-            </a>   
-            <ul>
-              <li><a href="icons-line-icons.html"><i class="material-icons-outlined">arrow_right</i>Footer Info</a>
-              </li>
-              <li><a href="icons-boxicons.html"><i class="material-icons-outlined">arrow_right</i>Footer Links</a>
-              </li>
-              <li><a href="icons-boxicons.html"><i class="material-icons-outlined">arrow_right</i>Footer Services</a>
-              </li>
-              <li><a href="icons-boxicons.html"><i class="material-icons-outlined">arrow_right</i>Footer Social Network</a>
-              </li>
-            </ul>
-          </li>
-
-          <li class="menu-label">Setting</li>
-          <li>
-            <a  href="javascript:;">
-              <div class="parent-icon"><i class="material-icons-outlined">toc</i>
-              </div>
-              <div class="menu-title">Color Settings</div>
-            </a>
-          
-          </li>
+    
          </ul>
         <!--end navigation-->
     </div>

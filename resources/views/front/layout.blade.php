@@ -45,6 +45,11 @@
                 max-height: 550px; 
                 flex-shrink: 0;
                 border-radius: 8px;
+            }   
+
+            :root {
+                --theme: {{ $staticSiteData->primary_color ?? '#DF0A0A' }};
+                --button: {{ $staticSiteData->secondary_color ?? '#1C2539' }};
             }
 
         </style>

@@ -15,11 +15,9 @@ class PackageController extends Controller
     return view('admin.dashboard.pricings.add_package', compact('staticSiteData', 'catagories'));
   }
   public function viewPackage(){
-    $packages = Package::all();
-    // dd($packages->features);
-    $features = Feature::all();
-
-    return view('admin.dashboard.pricings.package', compact('packages', 'features'));
+    $data['packages'] = Package::all();
+    $data['categories'] = PackageCategory::all();
+    return view('admin.dashboard.pricings.package', $data);
   }
 
   public function createPackage(Request $request){
@@ -85,6 +83,69 @@ class PackageController extends Controller
         }
   }
 
+  public function editPackage(Request $request, $id){
+    try{
+        $isPopular = "";
+        $priceUnit = "";
+        $icon = $request->package_image;
+        $name = $request->name;
+        $is_popular = $request->is_popular;
+        $desc = $request->desc;
+        $price =$request->price;
+        $unit =$request->unit;
+        $category = $request->category;
+        $button_text =$request->button_text;
+        $button_url =$request->button_url;
+
+        if($is_popular == "Yes"){
+            $isPopular = '1';
+        }else if($is_popular == "No"){
+            $isPopular = '0';
+        }else{
+            $isPopular = '0';
+        }
+        if($unit = "USD($)"){
+            $priceUnit = "$";
+        }else if($unit = "ETB"){
+            $priceUnit = "ETB";
+        }else{
+            $priceUnit = "ETB";
+        }
+        $package = Package::findOrFail($id);
+        if ($icon) {
+            $packageImageName = time() . '_packageImage.' . $icon->getClientOriginalExtension();
+            $icon->move(public_path('admin/package_image'), $packageImageName);
+            $package->icon = $packageImageName;
+        }
+        $package->is_popular = $isPopular;
+        $package->name = $name;
+        $package->desc = $desc;
+        $package->price = $price;
+        $package->unit = $priceUnit;
+        $package->category = $category;
+        $package->button_text = $button_text;
+        $package->button_url = $button_url;
+        if ($package->save()) {
+            return redirect()->back()->with('success', 'package updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'An error occurred while saving the package .');
+        }
+
+    }catch (\Exception $e) {
+        return redirect()->back()->with('error', 'An Error Occurred!');
+    }
+  }
+
+  public function destroyPackage($id){
+    $package = Package::findOrFail($id);
+    $imagePath = public_path('admin/package_image/' . $package->image);
+    if (file_exists($imagePath)) {
+        unlink($imagePath);
+    }
+    $package->delete();
+    return redirect()->back()->with('success', 'Package deleted successfully.');
+  }
+
   public function packageCat(){
     $categories = PackageCategory::all();
     return view('admin.dashboard.pricings.category', compact('categories'));
@@ -102,6 +163,26 @@ class PackageController extends Controller
     }catch (\Exception $e) {
             return redirect()->back()->with('error', 'An Error Occurred!');
         }
+  }
+
+  public function editCategory(Request $request, $id){
+    try{
+        $cat = PackageCategory::findOrFail($id);
+        $cat->name = $request->name;
+        if ($cat->save()) {
+            return redirect()->back()->with('success', 'Category updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'An error occurred while saving the Category.');
+        }
+    }catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An Error Occurred!');
+        }
+  }
+
+  public function destroyCategory($id){
+    $category = PackageCategory::findOrFail($id);
+    $category->delete();
+    return redirect()->back()->with('success', 'Category deleted successfully.');
   }
 
 }

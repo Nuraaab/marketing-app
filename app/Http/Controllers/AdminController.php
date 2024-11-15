@@ -26,9 +26,24 @@ class AdminController extends Controller
     } else {
         $images = [];
     }
-    return view('admin.dashboard.static_section', compact('staticSiteData', 'images'));
+    return view('admin.dashboard.static.static_section', compact('staticSiteData', 'images'));
 }
 
+public function bannerImage(){
+    $data['banners'] = BannerImage::all();
+    return view('admin.dashboard.static.banner_image', $data);
+}
+
+public function destroyBanners($id)
+{
+    $banner = BannerImage::findOrFail($id);
+    $imagePath = public_path('admin/banner/' . $banner->banner_image);
+    if (file_exists($imagePath)) {
+        unlink($imagePath);
+    }
+    $banner->delete();
+    return redirect()->back()->with('success', 'Banner Image deleted successfully.');
+}
 
 
         public function createTopData(Request $request){
@@ -54,6 +69,8 @@ class AdminController extends Controller
             $twitter_url = $request->twitter_url;
             $youtube_url = $request->youtube_url;
             $linkden_url = $request->linkden_url;
+            $primary_color = $request->primary_color;
+            $secondary_color = $request->secondary_color;
             $cta_image = $request->file('cta_image');
 
            
@@ -93,7 +110,9 @@ class AdminController extends Controller
             $site->facebook_url = $facebook_url;
             $site->youtube_url = $youtube_url;
             $site->twitter_url = $twitter_url;
-            $site_linkden_url =$linkden_url;
+            $site->linkden_url =$linkden_url;
+            $site->primary_color = $primary_color;
+            $site->secondary_color = $secondary_color;
             $site->copyright_text = $copyright_text;
             if($site->save()){
                 $banner = $request->file('banner');

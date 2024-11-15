@@ -12,15 +12,6 @@ class FeatureController extends Controller
     return view('admin.dashboard.pricings.add_features', compact('packages'));
    }
 
-//    public function viewFeature(){
-//     $features = Feature::all();
-//     // dd($feature->packages);
-//     $packages = Package::all();
-//     foreach ($features as $feature) {
-//         dd($feature->packages); // This will dump and die showing the related package for each feature
-//     }
-//     return view('admin.dashboard.pricings.features', compact('features', 'packages'));
-//    }
 
 public function viewFeature()
 {
@@ -44,6 +35,28 @@ public function viewFeature()
             return redirect()->back()->with('error', 'An Error Occurred!');
         }
    }
+
+   public function editFeature(Request $request, $id){
+    try{
+        $feature = Feature::findOrFail($id);
+        $feature->name = $request->name;
+        $feature->package_id = $request->package;
+        $feature->status = $request->status;
+        if ($feature->save()) {
+            return redirect()->back()->with('success', 'Feature updated successfully!');
+        } else {
+            return redirect()->back()->with('error', 'An error occurred while saving the data.');
+        }
+    }catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An Error Occurred!');
+        }
+   }
+
+   public function destroyFeature($id){
+    $feature = Feature::findOrFail($id);
+    $feature->delete();
+    return redirect()->back()->with('success', 'Feature deleted successfully.');
+  }
 
 
    public function assignFeature(Request $request)
