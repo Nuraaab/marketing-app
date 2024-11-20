@@ -4,14 +4,14 @@
        @include('front.partials.preloader')
 
        <!-- Header Top Section Here -->
-       <header class="main-header main-header-1">
+         <header class="main-header main-header-1">
             <div class="main-logo">
-                <a href="index.html">
+                <a href="/home">
                 <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-image">
                 </a>
             </div>
             <div class="main-button">
-                <a href="contact.html" class="theme-btn header-btn">
+                <a href="/packages" class="theme-btn header-btn">
                 Get Started
                 </a>
             </div>
@@ -35,7 +35,7 @@
                             <div class="header-right">
                                 <ul class="contact-list">
                                     <li>
-                                        <!-- <i class="fal fa-clock"></i>Mod-friday, 09am -05pm -->
+                                        <i class="fal fa-clock"></i>24/7
                                     </li>
                                 </ul>
                                 <ul class="social-icon">
@@ -72,13 +72,13 @@
                             <div class="row align-items-center">
                                 <div class="col-xl-9 col-lg-9 col-md-6">
                                     <div class="logo-1">
-                                        <a href="index.html">
+                                        <a href="/home">
                                             <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-img">
                                         </a>
                                     </div>
                                     <div class="menu">
                                         <div class="sticky-logo">
-                                            <a href="index.html">
+                                            <a href="/home">
                                                 <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-img">
                                             </a>
                                         </div>
@@ -86,31 +86,13 @@
                                             <ul>
                                                 <li class="active">
                                                     <a href="/">Home</a>
-                                                    <!-- <ul>
-                                                        <li><a href="index.html">Home Consulting</a></li>
-                                                        <li><a href="index-2.html">IT Solutions</a></li>
-                                                        <li><a href="index-3.html">Baking</a></li>
-                                                        <li><a href="index-4.html">Solar Energy</a></li>
-                                                    </ul> -->
                                                 </li>
                                                 <li><a href="/about">About Us</a></li>
                                                 <li><a href="/service">Service</a></li>
                                                 <li><a href="/project">Projects</a></li>
-                                                <!-- <li class="dropdown">
-                                                    <a href="#">Pages</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="project-details.html">Project Details</a></li>
-                                                        <li><a href="service-details.html">Service Details</a></li>
-                                                        <li><a href="team.html">Team</a></li>
-                                                        <li><a href="team-details.html">Team Details</a></li>
-                                                    </ul>
-                                                </li> -->
+                                                <li><a href="/packages">Pricing</a></li>
                                                 <li >
                                                     <a href="/news">News</a>
-                                                    <!-- <ul class="submenu">
-                                                        <li><a href="news.html">News</a></li>
-                                                        <li><a href="news-details.html">News Details</a></li>
-                                                    </ul> -->
                                                 </li>
                                                 <li><a href="/contact">Contact</a></li>
                                             </ul>
@@ -946,13 +928,28 @@
                                 <button type="submit" class="theme-btn mt-5">Choose Package</button>
                             </form>
 
-                            <!-- <form action="/test" method="POST">
-                                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                 <button href="#" class="theme-btn mt-5">Choose Package</button>
-                            </form> -->
+                            <div class="contact-options mt-4">
+                                <!-- Phone Number -->
+                                <a href ="tel:{{$contacts->phone}}" class="phone-number">
+                                <i class="far fa-phone-volume"></i>
+                                    {{ $contacts->phone ?? 'N/A' }}
+                                </a>
+                                
+                                <!-- Contact Link -->
+                                <p class="contact-link">
+                                    <a href="/contact" target="_blank">
+                                        Contact Us
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                     @endforeach
+                </div>
+                <div class="text-center mt-4">
+                    <a href="/packages" class="theme-btn fancy-btn wow fadeInUp" data-wow-delay=".2s">
+                        View More Packages
+                    </a>
                 </div>
                 @else
                 <div class="col-12 text-center">
@@ -961,6 +958,8 @@
                 @endif
             </div>
         </section>
+
+      
 
 
         <!-- News Blog Section Here -->
@@ -1129,7 +1128,7 @@
                                 {{$siteData->cta_subtitle}}
                             </h2>
                         </div>
-                        <a href="/project" class="theme-btn bg-style-3">
+                        <a href="/packages" class="theme-btn bg-style-3">
                         Get Started
                         </a>
                     </div>

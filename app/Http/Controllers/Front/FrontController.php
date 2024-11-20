@@ -27,10 +27,11 @@ class FrontController extends Controller
         $siteData = SiteData::first();
         $category = Request::query('category', 'all');
         if ($category === 'all') {
-            $packages = Package::with('features')->get();
+            $packages = Package::with('features')->take(3)->get();
         } else {
-            $packages = Package::with('features')->where('category', $category)->get();
+            $packages = Package::with('features')->where('category', $category)->take(3)->get();
         }
+
         $categories = PackageCategory::all();
         $data['siteData'] = $siteData;
         $data['contacts'] = ContactInfo::first();
@@ -51,6 +52,23 @@ class FrontController extends Controller
         $data['categories'] = $categories;
         $data['packages'] = $packages;
         return view("front.main-pages.home", $data);
+    }
+
+    public function getPackages(){
+        $data['siteData'] = SiteData::first();
+        $data['footer_news'] = Blog::all();
+        $data['contacts'] = ContactInfo::first();
+        $categories = PackageCategory::all();
+        $category = Request::query('category', 'all');
+        if ($category === 'all') {
+            $packages = Package::with('features')->get();
+        } else {
+            $packages = Package::with('features')->where('category', $category)->get();
+        }
+        $data['packages'] = $packages;
+        $data['selectedCategory'] = $category;
+        $data['categories'] = $categories;
+        return view('front.main-pages.pricing', $data);
     }
 
     public function getService(){

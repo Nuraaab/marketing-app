@@ -3,7 +3,7 @@
 
        @include('front.partials.preloader')
 
-       <!-- Header Top Section Here -->
+        <!-- Header Top Section Here -->
         <header class="main-header main-header-1">
             <div class="main-logo">
                 <a href="/home">
@@ -187,10 +187,10 @@
         </div>
         @endif
 
-        <div class="breadcrumb-wrapper mb-4" data-background="front/assets/img/breadcrumb/breadcrumb.jpg">
+        <div class="breadcrumb-wrapper" data-background="front/assets/img/breadcrumb/breadcrumb.jpg">
             <div class="container">
                 <div class="page-heading center">
-                    <h1>our services</h1>
+                    <h1>Packages</h1>
                     <ul class="breadcrumb-items">
                         <li>
                             <a href="index.html">
@@ -201,109 +201,96 @@
                             <i class="fas fa-chevron-double-right"></i>
                         </li>
                         <li>
-                            services
+                            Packages
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        <section class="service-section fix section-padding pt-0">
-            <div class="service-single-wrapper">
-                <div class="container">
-                    <div class="section-title">
-                        <span class="wow fadeInUp">
-                        {{!empty($siteData->service_title) ? $siteData->service_title : 'Title Here'}}
-                        </span>
-                        <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                           {{!empty($siteData->service_subtitle) ? $siteData->service_subtitle: 'Subtitle Here'}}
-                        </h2>
-                    </div>
-                    @if(isset($services) && $services->isNotEmpty())
-                    <div class="swiper service-wrapper">
-                        <div class="swiper-wrapper">
-                           @foreach($services as $service)
-                            <div class="swiper-slide">
-                                <div class="single-service-style-1">
-                                    <div class="service-image">
-                                        <img src="{{!empty($service->image) ? asset('admin/service_image/' . $service->image) : '' }}" alt="service-img">
-                                    </div>
-                                    <div class="content">
-                                        <div class="d-flex">
-                                            <div class="icon">
-                                                <img src="{{!empty($service->icon) ? asset('admin/service_image/' . $service->icon) : '' }}" alt="icon-img">
-                                            </div>
-                                            <div class="service-title">
-                                                <h3>
-                                                    <a href="{{route('service_details', ['id' => $service->id])}}">
-                                                   {{!empty($service->name) ? $service->name : ''}}
-                                                    </a>
-                                                </h3>
-                                            </div>
-                                        </div>
-                                        <p>
-                                           {{!empty($service->content) ? $service->content : ''}}
-                                        </p>
-                                        <a href="{{route('service_details', ['id' => $service->id])}}" class="theme-btn-2  mt-3">
-                                        {{!empty($service->button_name) ? $service->button_name : 'Get Started'}}<i class="fas fa-chevron-right"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                           @endforeach
-                        </div>
-                        <div class="swiper-dot text-center pt-5">
-                            <div class="dot"></div>
-                        </div>
-                    </div>
-                    @else
-                    <div class="col-12 text-center">
-                        <h1 style ="color:black;">No service found</h1>
-                    </div>
-                    @endif
-                </div>
-            </div>
-        </section>
 
-
-        <section class="service-provide">
-            <div class="line-shape">
-                <img src="front/assets/img/service/line-shape.png" alt="shape-img">
-            </div>
+        <section id="pricing-section"  class="pricing-section fix section-padding section-bg-2">
             <div class="container">
-                <div class="single-it-service-provide">
-                    <div class="arrow-shape wow fadeInUp" data-wow-delay=".3s">
-                        <img src="front/assets/img/service/arrow2.png" alt="shape-img">
-                    </div>
-                    <div class="arrow-shape-2 wow fadeInUp" data-wow-delay=".5s">
-                        <img src="front/assets/img/service/arrow2.png" alt="shape-img">
-                    </div>
-                    <div class="service-bg" data-background="front/assets/img/service/service-provide-bg.jpg">
-                        <div class="single-provide-content">
-                            <div class="section-content">
-                                <span class="wow fadeInUp">
-                                Unlock Your Digital Potential
-                                </span>
-                                <h2 class="wow fadeInUp" data-wow-delay=".3s">
-                                Innovative Web & App Development for Modern Businesses
-                                </h2>
-                                <p class="wow fadeInUp" data-wow-delay=".5s">
-                                We craft powerful digital solutions tailored to elevate your business. Specializing in web and app development, we design and build intuitive, high-performance platforms that connect with users and drive growth. Let us bring your digital vision to life with sleek, scalable, and user-friendly products.
-                                </p>
-                                <a href="contact.html" class="theme-btn bg-style-5 wow fadeInUp" data-wow-delay=".7s">
-                                Get Started
-                                </a>
+                <!-- Categories Section -->
+                <div class="section-title">
+                    <span class="wow fadeInUp">
+                        {{ $siteData->package_title ?? '' }}
+                    </span>
+                    <h2 class="wow fadeInUp" data-wow-delay=".3s">
+                        {{ $siteData->package_subtitle ?? '' }}
+                    </h2>
+                </div>
+
+                <!-- Category Buttons -->
+                <div class="category-list text-center">
+                    <a href="{{ url()->current() }}#pricing-section" class="theme-btn mt-5 {{ $selectedCategory === 'all' ? 'active' : '' }}">All</a>
+                    @foreach($categories as $category)
+                        <a href="{{ url()->current() }}?category={{ $category->name }}#pricing-section" 
+                        class="theme-btn mt-5 {{ $selectedCategory === $category->name ? 'active' : '' }}">
+                            {{ $category->name }}
+                        </a>
+                    @endforeach
+
+                    <!-- <a href="{{ url()->current() }}?category=app#pricing-section" class="theme-btn mt-5 {{ $selectedCategory === 'app' ? 'active' : '' }}">App</a> -->
+                </div>
+
+
+                <!-- Packages Display -->
+                @if($packages->isNotEmpty())
+                <div class="row package-list">
+                    @foreach($packages as $package)
+                    <div class="col-xl-4 col-lg-6 wow fadeInUp package-item" data-wow-delay=".5s">
+                        <div class="single-pricing-items {{ $package->is_popular == '1' ? 'active-tag' : '' }}">
+                            <div class="icon">
+                                <img src="{{ asset('/admin/package_image/' . ($package->icon ?? '')) }}" alt="icon-img">
                             </div>
-                            <div class="video-btn video-pulse">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=Cn4G2lZ_g2I"><i class="fas fa-play"></i></a>
+                            <div class="content">
+                                <h3>{{ $package->name ?? '' }}</h3>
+                                <p>{{ $package->desc ?? '' }}</p>
+                            </div>
+                            <div class="price-plan">
+                                <h2>{{ $package->unit ?? '' }}{{ $package->price ?? '' }}</h2>
+                            </div>
+                            <ul>
+                                @foreach($package->features as $feature)
+                                <li class="{{ $feature->status == '1' ? 'icon' : 'icon-2' }}">
+                                    <i class="{{ $feature->status == '1' ? 'fas fa-check' : 'fas fa-times' }}"></i>
+                                    {{ $feature->name ?? '' }}
+                                </li>
+                                @endforeach
+                            </ul>
+                            <form action="{{ route('checkout') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="package_id" value="{{ $package->id }}">
+                                <button type="submit" class="theme-btn mt-5">Choose Package</button>
+                            </form>
+
+                            <div class="contact-options mt-4">
+                                <!-- Phone Number -->
+                                <a href ="tel:{{$contacts->phone}}" class="phone-number">
+                                <i class="far fa-phone-volume"></i>
+                                    {{ $contacts->phone ?? 'N/A' }}
+                                </a>
+                                
+                                <!-- Contact Link -->
+                                <p class="contact-link">
+                                    <a href="/contact" target="_blank">
+                                        Contact Us
+                                    </a>
+                                </p>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
+                @else
+                <div class="col-12 text-center">
+                    <h1 style="color:#fff;">No packages found</h1>
+                </div>
+                @endif
             </div>
         </section>
-
-               <!-- Footer Section Here -->
-               <footer class="footer-wrapper section-bg section-padding pb-0">
+        <!-- Footer Section Here -->
+         <footer class="footer-wrapper section-bg section-padding pb-0">
             <div class="dot-shape">
                 <img src="{{asset('front/assets/img/footer/dot-shape.png')}}" alt="dot-img">
             </div>
@@ -488,4 +475,4 @@
             </div>
         </footer>
 
-@endsection
+@endsection    

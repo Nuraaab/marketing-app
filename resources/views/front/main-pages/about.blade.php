@@ -6,12 +6,12 @@
         <!-- Header Top Section Here -->
         <header class="main-header main-header-1">
             <div class="main-logo">
-                <a href="index.html">
+                <a href="/home">
                 <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-image">
                 </a>
             </div>
             <div class="main-button">
-                <a href="contact.html" class="theme-btn header-btn">
+                <a href="/packages" class="theme-btn header-btn">
                 Get Started
                 </a>
             </div>
@@ -35,7 +35,7 @@
                             <div class="header-right">
                                 <ul class="contact-list">
                                     <li>
-                                        <!-- <i class="fal fa-clock"></i>Mod-friday, 09am -05pm -->
+                                        <i class="fal fa-clock"></i>24/7
                                     </li>
                                 </ul>
                                 <ul class="social-icon">
@@ -72,13 +72,13 @@
                             <div class="row align-items-center">
                                 <div class="col-xl-9 col-lg-9 col-md-6">
                                     <div class="logo-1">
-                                        <a href="index.html">
+                                        <a href="/home">
                                             <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-img">
                                         </a>
                                     </div>
                                     <div class="menu">
                                         <div class="sticky-logo">
-                                            <a href="index.html">
+                                            <a href="/home">
                                                 <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-img">
                                             </a>
                                         </div>
@@ -86,31 +86,13 @@
                                             <ul>
                                                 <li class="active">
                                                     <a href="/">Home</a>
-                                                    <!-- <ul>
-                                                        <li><a href="index.html">Home Consulting</a></li>
-                                                        <li><a href="index-2.html">IT Solutions</a></li>
-                                                        <li><a href="index-3.html">Baking</a></li>
-                                                        <li><a href="index-4.html">Solar Energy</a></li>
-                                                    </ul> -->
                                                 </li>
                                                 <li><a href="/about">About Us</a></li>
                                                 <li><a href="/service">Service</a></li>
                                                 <li><a href="/project">Projects</a></li>
-                                                <!-- <li class="dropdown">
-                                                    <a href="#">Pages</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="project-details.html">Project Details</a></li>
-                                                        <li><a href="service-details.html">Service Details</a></li>
-                                                        <li><a href="team.html">Team</a></li>
-                                                        <li><a href="team-details.html">Team Details</a></li>
-                                                    </ul>
-                                                </li> -->
+                                                <li><a href="/packages">Pricing</a></li>
                                                 <li >
                                                     <a href="/news">News</a>
-                                                    <!-- <ul class="submenu">
-                                                        <li><a href="news.html">News</a></li>
-                                                        <li><a href="news-details.html">News Details</a></li>
-                                                    </ul> -->
                                                 </li>
                                                 <li><a href="/contact">Contact</a></li>
                                             </ul>

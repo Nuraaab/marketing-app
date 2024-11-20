@@ -67,6 +67,7 @@ Route::controller(FrontController::class)->group(function(){
     Route::get('/news_details/{id}', 'newsDetails')->name('news_details');
     Route::get('/service_details/{id}', 'serviceDetails')->name('service_details');
     Route::get('/team_details/{id}', 'teamDetails')->name('team_details');
+    Route::get('/packages', 'getPackages')->name('packages');
     Route::post('/checkout', 'getLogin')->name('checkout');
     Route::post('/contact', 'contact')->name('contact');
 

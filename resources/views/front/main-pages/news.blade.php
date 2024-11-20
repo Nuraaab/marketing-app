@@ -4,14 +4,14 @@
        @include('front.partials.preloader')
 
        <!-- Header Top Section Here -->
-       <header class="main-header main-header-1">
+        <header class="main-header main-header-1">
             <div class="main-logo">
-                <a href="index.html">
+                <a href="/home">
                 <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-image">
                 </a>
             </div>
             <div class="main-button">
-                <a href="contact.html" class="theme-btn header-btn">
+                <a href="/packages" class="theme-btn header-btn">
                 Get Started
                 </a>
             </div>
@@ -35,7 +35,7 @@
                             <div class="header-right">
                                 <ul class="contact-list">
                                     <li>
-                                        <!-- <i class="fal fa-clock"></i>Mod-friday, 09am -05pm -->
+                                        <i class="fal fa-clock"></i>24/7
                                     </li>
                                 </ul>
                                 <ul class="social-icon">
@@ -72,13 +72,13 @@
                             <div class="row align-items-center">
                                 <div class="col-xl-9 col-lg-9 col-md-6">
                                     <div class="logo-1">
-                                        <a href="index.html">
+                                        <a href="/home">
                                             <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-img">
                                         </a>
                                     </div>
                                     <div class="menu">
                                         <div class="sticky-logo">
-                                            <a href="index.html">
+                                            <a href="/home">
                                                 <img src="{{!empty($siteData->header_logo) ? asset('admin/logo/' . $siteData->header_logo) : '' }}" alt="logo-img">
                                             </a>
                                         </div>
@@ -86,31 +86,13 @@
                                             <ul>
                                                 <li class="active">
                                                     <a href="/">Home</a>
-                                                    <!-- <ul>
-                                                        <li><a href="index.html">Home Consulting</a></li>
-                                                        <li><a href="index-2.html">IT Solutions</a></li>
-                                                        <li><a href="index-3.html">Baking</a></li>
-                                                        <li><a href="index-4.html">Solar Energy</a></li>
-                                                    </ul> -->
                                                 </li>
                                                 <li><a href="/about">About Us</a></li>
                                                 <li><a href="/service">Service</a></li>
                                                 <li><a href="/project">Projects</a></li>
-                                                <!-- <li class="dropdown">
-                                                    <a href="#">Pages</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="project-details.html">Project Details</a></li>
-                                                        <li><a href="service-details.html">Service Details</a></li>
-                                                        <li><a href="team.html">Team</a></li>
-                                                        <li><a href="team-details.html">Team Details</a></li>
-                                                    </ul>
-                                                </li> -->
+                                                <li><a href="/packages">Pricing</a></li>
                                                 <li >
                                                     <a href="/news">News</a>
-                                                    <!-- <ul class="submenu">
-                                                        <li><a href="news.html">News</a></li>
-                                                        <li><a href="news-details.html">News Details</a></li>
-                                                    </ul> -->
                                                 </li>
                                                 <li><a href="/contact">Contact</a></li>
                                             </ul>
@@ -286,17 +268,6 @@
                         </ul>
                     </div>
 
-                        <!-- <div class="page-nav-wrap mt-60 text-center">
-                            <ul>
-                                <li><a class="page-numbers" href="#"><i class="fal fa-long-arrow-left"></i></a></li>
-                                <li><a class="page-numbers" href="#">01</a></li>
-                                <li><a class="page-numbers" href="#">02</a></li>
-                                <li><a class="page-numbers" href="#">..</a></li>
-                                <li><a class="page-numbers" href="#">10</a></li>
-                                <li><a class="page-numbers" href="#">11</a></li>
-                                <li><a class="page-numbers" href="#"><i class="fal fa-long-arrow-right"></i></a></li>
-                            </ul>
-                        </div> -->
                     </div>
                     <div class="col-12 col-lg-4">
                         <div class="main-sidebar">
@@ -312,33 +283,27 @@
                                 </div>
                             </div>
                            
-                            <div class="single-sidebar-widget">
-                                <div class="wid-title">
-                                    <h3>Categories</h3>
-                                </div>
-                                <div class="widget_categories">
-                                    <ul>
-                                        <li><a href="news.html">Consultant <span>23</span></a></li>
-                                        <li><a href="news.html">Help <span>24</span></a></li>
-                                        <li><a href="news.html">Education <span>11</span></a></li>
-                                        <li><a href="news.html">Technology <span>05</span></a></li>
-                                        <li><a href="news.html">business <span>06</span></a></li>
-                                        <li><a href="news.html">Events <span>10</span></a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            @isset($siteData)
                             <div class="single-sidebar-widget">
                                 <div class="wid-title">
                                     <h3>Never Miss News</h3>
                                 </div>
                                 <div class="social-link">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
-                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                    @isset($siteData->facebook_url)
+                                    <a href="{{$siteData->facebook_url}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                                    @endisset
+                                    @isset($siteData->twitter_url)
+                                    <a href="{$siteData->twitter_url}" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    @endisset
+                                    @isset($siteData->youtube_url)
+                                    <a href="{{$siteData->youtube_url}}" target="_blank"><i class="fab fa-youtube"></i></a>
+                                    @endisset
+                                    @isset($siteData->linkden_url)
+                                    <a href="{{$siteData->linkden_url}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                                    @endisset
                                 </div>
                             </div>
+                            @endisset
                         </div>
                     </div>
                 </div>

@@ -114,7 +114,7 @@ class PortfolioController extends Controller
                     if ($index === 0) {
                         $firstImagePath = $projectImageName;
                     }
-                
+                dd($projectImageName);
                     // Create and save a new ProjectImage for each image
                     $projectImage = new ProjectImage();
                     $projectImage->image = $projectImageName;
