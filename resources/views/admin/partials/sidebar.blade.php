@@ -38,7 +38,7 @@
 
           <li>
             <a  href="/view_features">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">star</i>
               </div>
               <div class="menu-title">Feature Section</div>
             </a>
@@ -46,7 +46,7 @@
           </li>
           <li>
             <a href="/about_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">info</i>
               </div>
               <div class="menu-title">About Section</div>
             </a>   
@@ -54,7 +54,7 @@
 
           <li>
             <a href="/view_services">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">miscellaneous_services</i>
               </div>
               <div class="menu-title">Service Section</div>
             </a>   
@@ -64,7 +64,7 @@
 
           <li>
             <a href="/view_team">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">group</i>
               </div>
               <div class="menu-title">Team Section</div>
             </a>   
@@ -73,7 +73,7 @@
 
           <li>
             <a href="/view_why_us">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">thumb_up</i>
               </div>
               <div class="menu-title">Why Choose Us</div>
             </a>   
@@ -81,7 +81,7 @@
 
           <li>
             <a class="has-arrow" >
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">work</i>
               </div>
               <div class="menu-title">Portfolio Section</div>
             </a>  
@@ -96,7 +96,7 @@
 
           <li>
             <a href="/view_faq">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">question_answer</i>
               </div>
               <div class="menu-title">FAQ Section</div>
             </a>   
@@ -104,7 +104,7 @@
 
           <li>
             <a href="/view_counter">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">exposure_plus_1</i>
               </div>
               <div class="menu-title">Counter Section</div>
             </a>   
@@ -112,7 +112,7 @@
 
           <li>
             <a href="/view_testimonial">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">rate_review</i>
               </div>
               <div class="menu-title">Testimonial Section</div>
             </a>   
@@ -120,7 +120,7 @@
 
           <li>
             <a href="/view_blog">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">article</i>
               </div>
               <div class="menu-title">Blog Section</div>
             </a>   
@@ -128,7 +128,7 @@
 
           <li>
             <a href="/view_brand">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">branding_watermark</i>
               </div>
               <div class="menu-title">Brand Section</div>
             </a>   
@@ -136,7 +136,7 @@
 
           <li>
             <a  class="has-arrow">
-              <div class="parent-icon"><i class="material-icons-outlined">sports_football</i>
+              <div class="parent-icon"><i class="material-icons-outlined">price_check</i>
               </div>
               <div class="menu-title">Pricing</div>
             </a>
@@ -154,7 +154,7 @@
           
           <li>
             <a href="/contact_section">
-              <div class="parent-icon"><i class="material-icons-outlined">widgets</i>
+              <div class="parent-icon"><i class="material-icons-outlined">contact_mail</i>
               </div>
               <div class="menu-title">Contact Section</div>
             </a>   

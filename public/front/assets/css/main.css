@@ -39,21 +39,21 @@ Version: 1.0.0
 }
 
 /* pricing */
-/* Center the button horizontally */
+
  .single-pricing-items form {
      display: flex;
-     justify-content: center; /* Centers the button horizontally */
-     margin-top: 20px; /* Adds space above the button */
+     justify-content: center; 
+     margin-top: 20px; 
  }
 
- /* Add spacing between the package cards */
+
  .package-item {
-     margin-bottom: 30px; /* Adds spacing between cards at the bottom */
+     margin-bottom: 30px; 
  }
 
- /* Ensure consistent spacing for the entire section */
+
  .package-list {
-     row-gap: 20px; /* Adds vertical spacing between rows */
+     row-gap: 20px; 
  }
  .single-pricing-items {
      display: flex;
@@ -66,17 +66,17 @@ Version: 1.0.0
      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
  }
 
- /* Styling the features list */
+
  .single-pricing-items ul {
-     max-height: 150px; /* Adjust the height as needed */
-     overflow-y: auto; /* Enable scrolling when content overflows */
+     max-height: 150px; 
+     overflow-y: auto; 
      margin: 0;
      padding: 0;
      list-style: none;
-     scrollbar-width: thin; /* Firefox scrollbar styling */
+     scrollbar-width: thin; 
  }
 
- /* Scrollbar styling for Webkit-based browsers (Chrome, Edge, Safari) */
+
  .single-pricing-items ul::-webkit-scrollbar {
      width: 6px;
  }
@@ -90,27 +90,24 @@ Version: 1.0.0
      background: #f1f1f1;
  }
 
- /* Add some spacing between list items */
  .single-pricing-items ul li {
      margin-bottom: 10px;
  }
 
- /* Style the contact options container */
+
 .contact-options {
-  text-align: center; /* Center align the phone number and link */
+  text-align: center; 
 }
 
-/* Style the phone number */
 .contact-options .phone-number {
   font-size: 16px;
   color: var(--theme);
   margin: 5px 0;
 }
 
-/* Style the contact link */
 .contact-options .contact-link a {
   font-size: 16px;
-  color: var(--theme); /* Blue link color */
+  color: var(--theme);
   text-decoration: none;
 }
 
@@ -130,12 +127,6 @@ Version: 1.0.0
   transition: 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
-/* .fancy-btn:hover {
-  background: linear-gradient(45deg, #af002d, #ff7a18);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-  transform: translateY(-3px);
-} */
 
 
 
